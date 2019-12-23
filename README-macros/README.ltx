@@ -1,0 +1,318 @@
+\documentclass[12pt,a4paper,titlepage,dvipdfmx]{bxjsarticle}
+% \usepackage[margin=2cm]{geometry}
+\usepackage[Japanese]{../macros}
+%
+\title{日本語レポートの書き方\\with スタイルファイル\texttt{macros}}
+\author{Woody}
+%
+\begin{document}
+\maketitle
+
+\setcounter{tocdepth}{5}
+\tableofcontents
+
+\clearpage
+
+\section{はじめに}
+
+このPDFでは，自分が実験のレポートを\LaTeX{}で書くときに調べた情報をまとめている．
+また，理系（特に電気電子工学）向けに作成した，レポート用スタイルファイル\texttt{macros.sty}で使用可能になるコマンドの使い方を書いている．
+
+\section{スタイルファイルの使い方}
+
+\LaTeX{}ファイルのプリアンブルに普段どおり
+\begin{lstlisting}
+\documentclass[12pt,a4paper,titlepage,dvipdfmx]{jsarticle}
+\usepackage{geometry}
+\end{lstlisting}
+や
+\begin{lstlisting}
+\documentclass[12pt,a4paper,titlepage,dvipdfmx]{bxjsarticle}
+% \usepackage[margin=2cm]{geometry}
+\end{lstlisting}
+などと記入\footnote{geometryはmarginの設定など個人ごとに内容が大きく違うと思うのでスタイルファイルに含めなかった．}
+したあと，
+\verb+macros.sty+を\LaTeX{}ファイルと同じ場所にコピーして，
+\begin{lstlisting}
+\usepackage[Japanese]{../macros}
+\end{lstlisting}
+と続けて記入する．これにより，標準的なレポートに必要なパッケージはすべて読み込まれる
+ので，プリアンブルはこれだけでよい．\footnote{作者の好みにより，必要なパッケージが一括で読み込まれるようにした．}
+
+ただし，作者の環境は
+\texttt{Ubuntu 19.04 + TeXLive 2019}でインストールされたp\LaTeXe{}
+であり，それ以外の環境ではうまく動かない可能性があることを了承してほしい．
+
+\subsection{英文を書くときは}
+オプション引数を変えて
+\begin{lstlisting}
+\usepackage[English]{../macros}
+\end{lstlisting}
+とすればよい．
+
+\section{コマンド解説}
+
+このスタイルファイルで使用可能になるコマンドを解説する．
+
+\subsection{参照}
+文章の他の部分を参照する方法を述べる．表・図・式の参照については\cite{heiho}を参考にした．
+
+\subsubsection{表}
+\verb+\tabref{...}+とすれば表を参照できる．
+
+例：\tabref{tab:results}を参照
+
+\begin{table}[H]
+\centering
+\caption{実験結果}
+\begin{tabular}{|r|r|r|r|}
+\hline
+$f/\iU{Hz}$ & $|E_{i}|/\iU{V}$ & $|E_{o}|/\iU{V}$ & $\theta/\iU{deg}$ \\ \hline
+50         & 4.1                & 0.056              & 90               \\ \hline
+100        & 4.1                & 0.092              & 90               \\ \hline
+500        & 4.1                & 0.424              & 83.5             \\ \hline
+700        & 4.1                & 0.577              & 80.5             \\ \hline
+\end{tabular}\label{tab:results}
+\end{table}
+
+\subsubsection{図}
+\verb+\figref{...}+とすれば図を参照できる．
+
+例：\figref{fig:gainFit}は小さめ，
+\figref{fig:gainFitHuge}は大きめ
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=90mm]{exampleGraph.pdf}
+    \caption{ちょうどいい大きさの図}\label{fig:gainFit}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{exampleGraph.pdf}
+    \caption{横幅を最大にした図}\label{fig:gainFitHuge}
+\end{figure}
+
+なお，p\LaTeX{}においてはPDFファイルを普通に読み込むことができるうえ，
+bounding box周りの面倒事にも悩まされなくてすむので，PDFファイルのほうが使いやすい．
+大きなデメリットもないので，可能ならPDF形式で画像を保存しておくのが良いだろう\footnote{なお，EPSファイルはデメリットばかりというわけでもないようだ．golden lucky氏が
+\uhref{https://golden-lucky.hatenablog.com/entry/2018/12/04/183000\#LaTeX\%E6\%96\%87\%E6\%9B\%B8\%E3\%81\%AB\%E3\%81\%8A\%E3\%81\%84\%E3\%81\%A6EPS\%E3\%81\%AF\%E3\%81\%A9\%E3\%81\%86\%E6\%89\%B1\%E3\%82\%8F\%E3\%82\%8C\%E3\%82\%8B\%E3\%81\%8B}
+{論じている}
+ように，純粋なテキストファイルなので，テキストエディタで編集でき，バージョン管理が容易というメリットもある}
+．
+
+\subsubsection{回路図}
+
+\texttt{tikz}環境を使うと，図を描くことができる．
+特に，\texttt{circuitikz}環境では，回路図を描くための便利なコマンドが使える．
+詳しくはソースコードを見てほしい．
+\figref{fig:HPF}，\figref{fig:OpAmpAndCondenserConnection}のような図を出力できる．
+また，端末に\texttt{texdoc circuitikz}と入力することでマニュアルを読むことができる．
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[]
+        % 線をひく座標の始点と終点を()で指定する．連続で指定することもでき，最後はセミコロンで終わる．
+        % 間は，ただの線なら"--"，それ以外なら"[...]"で指定する．
+        \draw (0,2) to[C, o-*, label=$C$] (2,2) to[R, -*, label=$R$] (2,0) to[short, -o] (0,0);
+        % "++()"で，相対座標で指定できる
+        \draw (2,2) to[short, -o] ++(1.5,0);
+        \draw (2,0) to[short, -o] ++(1.5,0);
+        % drawのあとにオプション引数をつけると線のスタイルが変わる
+        \draw[<->] (0,0.2) -- (0,1.8);
+        \draw[<->] (3.5,0.2) -- (3.5,1.8);
+        % ()で指定された場所にノードを作り，そこに文字を書き込める．
+        \draw (0,1) node[left] {$V_{i}$};
+        \draw (3.5,1) node[right] {$V_{o}$};
+        % 右上に書き込みたいときはこうする：
+        % \draw (0,0) node[above right] {sample text};
+    \end{circuitikz}
+    \caption{\texttt{circuitikz}で描いたCRハイパスフィルタ}
+    \label{fig:HPF}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[]
+        \draw (0,2) node[op amp] (opamp) {}; % (opamp)のようにして名前をつけることで，あとから参照できる
+        \draw (opamp.up) -- ++(0,1) -- ++(6,0);
+        \draw (opamp.down) -- ++(0,-1) -- ++(6,0);
+        \draw (3,3.55) to[eC, *-*, l=$10\U{uF}$] (3,2) to[eC, *-*,l=$10\U{uF}$] (3,0.45);
+        \draw (3,2) -- ++(-0.8,0) node[ground] {};
+        \draw (5.9,3.55) to[battery2, *-*, l=$15\U{V}$] (5.9,2) to[battery2, *-*,l=$15\U{V}$] (5.9,0.45);
+        \draw (5.9,2) -- ++(-0.8,0) node[ground] {};
+    \end{circuitikz}
+    \caption{電源・発信防止コンデンサの接続図}
+    \label{fig:OpAmpAndCondenserConnection}
+\end{figure}
+
+\subsubsection{数式}
+
+\verb+\eqnref{...}+で参照できる．
+
+例：\eqnref{eqn:sc},\eqnref{eqn:maxwell}．
+
+\begin{equation}
+  I = I_{ph} - I_{d} = I_{ph} - I_0\left\{\exp\left(\frac{qV}{nkT}\right)-1\right\}
+  \label{eqn:sc}
+\end{equation}
+
+\begin{align}
+  \begin{cases}
+    \nabla \cdot \bm{B}(t,\bm{x}) &= 0 \\
+    \nabla \times \bm{E}(t,\bm{x}) + {\dpdif {\bm{B}(t,\bm{x})}{t}} &= 0 \\
+    \nabla \cdot \bm{D}(t,\bm{x}) &= \rho (t,\bm{x}) \\
+    \nabla \times \bm{H}(t,\bm{x})-{\dpdif {\bm{D}(t,\bm{x})}{t}} &= \bm{j}(t,\bm{x})
+    \label{eqn:maxwell}
+  \end{cases}
+\end{align}
+
+\subsubsection{URL}
+下線を引いて強調したい場合は
+\verb+\uurl{https://...}+\footnote{underlined urlの意}
+が使える．
+
+\begin{itemize}
+    \item \texttt{url}を使った場合：\url{https://www.google.com/}
+    \item \texttt{uurl}を使った場合：\uurl{https://www.google.com/}
+\end{itemize}
+
+また，URLを隠したい場合は，\verb+\href{https://...}{代替テキスト}+が使える．
+見た目がキレイになるが，印刷するためのレポートに使っても当然意味はない．
+
+
+\begin{itemize}
+    \item \texttt{href}を使った場合：\href{https://www.google.com/}{某広告企業}
+    \item \texttt{uhref}を使った場合：\uhref{https://www.google.com/}{某広告企業}
+\end{itemize}
+
+\subsection{数式の記法}
+
+\subsubsection{単位の書き方}
+
+Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる．
+この中ではアルファベットはローマン体になり，
+\texttt{O}は\verb+\Omega+（抵抗の単位オーム）に，
+\texttt{uj}は\verb+\mu+（100万分の1の接頭辞マイクロ）になる．
+
+ほんとうにOやuを使いたいときは\verb+\O+,\verb+\u+とする．
+これにより\verb+\O+や\verb+\u+が上書きされて使えなくなっているが，
+どちらも単位においてはまず使わない文字・命令なので心配はない．
+
+このコマンドは自動で前に小スペース（\verb`\,`）を入れる．
+入れないほうがいい場合は\verb`\iU`とする\footnote{immediate Unitの意
+}．
+
+
+\tabref{tab:units}に使い方をまとめた．
+
+\begin{table}[htbp]
+\caption{単位・数値の凡例}
+\centering
+\begin{tabular}{l|ll}
+文字                                                     & 見え方                                              & 備考                                 \\
+\hhline{=|==}
+\verb`1\U{kO}`                                           & $1\U{kO}$                                           &                                      \\
+\verb`10\U{ug}`                                          & $10\U{ug}$                                          &                                      \\
+\verb`f/\iU{Hz}`                                         & $f/\iU{Hz}$                                         & \tabref{tab:results}などで使っている \\
+\verb`10\U{N \udot m}`                                   & $10\U{N \udot m}$                                   & \verb`cdot`だとスペースが空く        \\
+\verb`6.67430\times 10^{-11} \U{m^3 kg^{-1} s^{-2}}`     & $6.67430\times 10^{-11} \U{m^3 kg^{-1} s^{-2}}$     & 重力定数                             \\
+\verb`6.67430\times 10^{-11} \U{m^3\, kg^{-1}\, s^{-2}}` & $6.67430\times 10^{-11} \U{m^3\, kg^{-1}\, s^{-2}}$ & スペースを入れるのもあり             \\
+\verb`100\degC`                                          & $100\degC$                                          & 水の沸点                             \\
+\verb`100\degF`                                          & $100\degF$                                          & ヒトの体温                           \\
+\verb`180\deg`                                           & $180\deg$                                           & 2直角                                \\
+
+\end{tabular}\label{tab:units}
+\end{table}
+
+\subsubsection{その他の記号%
+\label{otherSymbols}%
+}
+
+よく使う記号を\tabref{tab:symbols}にまとめた．
+
+\clearpage
+
+\begin{table}[t]
+\caption{使用頻度の高い数学記号}
+\begin{tabular}{l|ll|l}
+記法                                           & 見え方                    & 意味                          & 備考                                        \\
+\hhline{=|==|=}
+\verb`E\sub{in}`                               & $E\sub{in}$               & ローマン体下付き文字          &                                             \\
+\verb`f\sur{(n)}`                              & $f\sur{(n)}$              & ローマン体上付き文字          &                                             \\
+\verb`\ii`                                     & $\ii$                     & 虚数単位                      &                                             \\
+\verb`\jj`                                     & $\jj$                     & 虚数単位                      & 手前に小スペース（\verb`\,`）               \\
+\verb`\ee`                                     & $\ee$                     & ネイピア数                    &                                             \\
+\verb`\dd`                                     & $\dd$                     & 微分演算子                    &                                             \\
+\verb`\Re`\footnotemark[1]                     & $\Re$                     & 実部                          &                                             \\
+\verb`\Im`\footnotemark[1]                     & $\Im$                     & 虚部                          &                                             \\
+\verb`\cc`                                     & $\cc$                     & 複素共役                      & 例：$\Re z = (z+\cc)/2$                     \\
+\verb`\Hc`                                     & $\Hc$                     & エルミート共役                &                                             \\
+\verb`\bra{\phi}`                              & $\bra{\phi}$              & ブラ                          &                                             \\
+\verb`\ket{\phi}`                              & $\ket{\phi}$              & ケット                        &                                             \\
+\verb`\bracket{\phi}`                          & $\bracket{\phi}$          & ブラケット                    &                                             \\
+\verb`\bracket{\phi}[\psi]`\footnotemark[2]    & $\bracket{\phi}[\psi]$    & ブラケット                    &                                             \\
+\verb`\bracket{\phi}[A][\psi]`\footnotemark[2] & $\bracket{\phi}[A][\psi]$ & ブラケット                    &                                             \\
+\verb`\diver`                                  & $\diver$                  & 発散                          & \verb`\div`は割り算記号に予約済             \\
+\verb`\curl`                                   & $\curl$                   & 回転                          &                                             \\
+\verb`\rot`                                    & $\rot$                    & 回転                          &                                             \\
+\verb`\grad`                                   & $\grad$                   & 勾配                          &                                             \\
+\verb`\vct{ABC}`                               & $\vct{ABC}$               & ベクトル                      & \verb`\bm{ABC}`に同じ．\verb`\vec`は上矢印  \\
+\verb`A \defeq B`                              & $A \defeq B$              & 定義                          &                                             \\
+\verb`A \coloneqq B`                           & $A \coloneqq B$           & 定義                          & \texttt{mathtools}パッケージ                \\
+\verb`\ph{E}`                                  & $\ph{E}$                  & フェーザ                      & \verb`\tilde{E}`に同じ                      \\
+\verb`\dot{E}`                                 & $\dot{E}$                 & フェーザ・微分                & 標準コマンド                                \\
+\verb`\ddot{x}`                                & $\ddot{x}$                & 二階微分                      & 三階，四階も同様                            \\
+\verb`\dif{x}{t}`                            & $\dif{x}{t}$            & 微分                          & 下に示すような派生があり,組み合わせて使える \\
+\verb`\dif[n]{x}{t}`                         & $\dif[n]{x}{t}$         & n階微分                       & オプション引数をつける                      \\
+\verb`\ddif{x}{t}`                           & $\ddif{x}{t}$           & 微分（\texttt{displaystyle}） & 前にdをつける                               \\
+\verb`\pdif{P}{q}`                           & $\pdif{P}{q}$           & 偏微分                        & partial differentiationの意                 \\
+\verb`\fdif{P}{q}`                           & $\fdif{P}{q}$           & 偏微分                        & flat fracの意                               \\
+\verb`\pdif{P}{q}[r][s]`                     & $\pdif{P}{q}[r][s]$     & 偏微分                        & オプション引数で合計3個まで                 \\
+\verb`\N`                                      & $\N$                      & 自然数全体の集合              & $\Z,\Q,\R,\C$も同様\cite{y.}                \\
+\verb`\abs{x}`                                 & $\abs{x}$                 & 絶対値                        & \cite{y.}                                   \\
+\verb`\norm{x}`                                & $\norm{x}$                & ノルム                        & \cite{y.}                                   \\
+\verb`\wcond{y(x)}{x=3}`                                & $\wcond{y(x)}{x=3}$                & 条件                        & with conditionの意                                   \\
+\end{tabular}\label{tab:symbols}
+\end{table}
+
+\subsection{謝辞・参考になる資料}
+
+\footnotetext[1]{これら２つは，\texttt{\textbackslash Re},\texttt{\textbackslash Im}という標準コマンドを上書きするが，\texttt{\textbackslash mathfrak\{R\}}$=\mathfrak{R}$などで代用可能}
+\footnotetext[2]{\texttt{[]}になってるのはオプション引数のイメージ}
+\clearpage
+
+\cite{heiho}は実験レポートづくりのたたき台として役にたつ．
+このPDFはこれに触発されて作った．
+
+日常的に\LaTeX{}の文章作成で困ったことがあったら，\cite{HO}を調べればたいてい解決する．
+一方で，\cite{SH}は\LaTeX{}の細かい機能を知りたくなったとき，辞書として便利．
+
+手元にこれらの本がないときは，\cite{TakutoAsakura}がコンパクトながら主要なコマンドを網羅している．\TeX{}をローカルに導入しているならコマンド一つ（\texttt{texdoc platexsheet}）で手軽に読むことができる．
+
+\cite{y.}は 数学系の文章の書き方についてよくまとまっている．数式の記法について調べたいときに参考になる．\cite{oda:95}は少し古いうえ\TeX{}向けに書かれたものだが，数式・英文の記法に関してとても内容が充実している．
+
+\begin{thebibliography}{9}
+
+\bibitem[5ebec 2019]{heiho} 5ebec. \uhref{https://github.com/5ebec/student-experiment-latex-template}{学生実験のための\LaTeX{}雛形}. 2019.
+
+
+\bibitem[北野2004]{kitano} Masao Kitano. ``\uhref{http://kir018304.kir.jp/nc/htdocs/?page_id=21}{Unit.sty --- A small macro package for physical formulas}''. 2004.
+
+単位，数式の様々な便利な略記法がのっているスタイルファイル．
+\uhyperref[otherSymbols]{その他の記号}の節はおもにこれによった．
+
+\bibitem[y.\ 2016]{y.} y. \uhref{http://iso.2022.jp/math/texintro2016/resume.pdf}{\TeX{}講習会資料}. 2016.
+
+\bibitem[小田1995]{oda:95} 小田忠雄. 数学の常識・非常識---由緒正しい\TeX{}入力法. 数学通信, Vol.~4, No.~1, pp.~95--112, 1995.
+\uurl{http://mathsoc.jp/publication/tushin/index-4-1.html}.
+
+\bibitem[Asakura 2016]{TakutoAsakura} Takuto Asakura. p\LaTeXe{}チートシート. 2016.
+
+\bibitem[奥村2013]{HO} Haruhiko Okumura et al. \LaTeXe{}美文書作成入門 改訂第6版. 2013.
+
+\bibitem[藤田2003]{SH} Shinsaku Fujita. \LaTeXe{}コマンドブック. 2003.
+
+\end{thebibliography}
+
+\end{document}

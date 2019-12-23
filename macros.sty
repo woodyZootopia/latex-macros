@@ -1,0 +1,249 @@
+\ProvidesPackage{macros}[2019/10/13 - Shu Woody Nakamura]
+\NeedsTeXFormat{LaTeX2e}
+
+\RequirePackage[T1]{fontenc}                  % fontを8bitにする
+\RequirePackage{bm}
+\RequirePackage{lmodern}                      % LMフォントを使う
+\RequirePackage{listings}                     % ソースコードを貼り付けられるようにする
+\RequirePackage{textcomp}
+\RequirePackage{nimbusserif}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[dvipdfmx]{graphicx}           % enables graphic
+\RequirePackage{tikz}
+\usetikzlibrary{intersections, calc, patterns, arrows, decorations, angles}
+\RequirePackage{circuitikz}
+\RequirePackage{here}                         % enables use of 'here' of picture
+\RequirePackage{amsmath,amssymb,amsfonts}     % enables math
+\RequirePackage{mathtools}                    % coloneqqなど
+\RequirePackage{amsthm,shadethm}              % 定理など
+\RequirePackage{mathrsfs}                     % enables use of script（花文字）
+\RequirePackage{url}                          % enables url
+\urlstyle{same}
+\RequirePackage{pxrubrica}                    % enables ruby of japanese
+\RequirePackage[deluxe,expert,uplatex]{otf}           % enables use of opentype font
+\RequirePackage[noto]{pxchfon}                % optional: use Google's Noto Font
+\RequirePackage{nimbusserif}                  % times for roman text
+\RequirePackage[breakable]{tcolorbox}
+\RequirePackage{hhline}                       % hhline
+\RequirePackage{wrapfig}
+\RequirePackage{ascmac}
+\RequirePackage{makeidx}
+\RequirePackage[ampersand]{easylist}
+\RequirePackage{xparse}
+
+% listingsの設定
+\lstset{
+  basicstyle={\ttfamily},
+  frame=single,
+  columns=[l]{fullflexible},
+  xrightmargin=3zw,
+  xleftmargin=3zw,
+  lineskip=-0.6ex
+}
+
+\RequirePackage[l2tabu,orthodox]{nag}         %古いパッケージや命令の利用を警告する
+
+\RequirePackage[dvipdfmx,hidelinks]{hyperref} % hyperlinking. 環境を汚すので最後にする
+
+% キャプションにコロンをつける（"図1: ほげ"）
+% 一応unsupportedらしいがうまく動いているので気にしない
+% \RequirePackage{caption}
+% \captionsetup[figure]{labelsep=colon}
+% \captionsetup[table]{labelsep=colon}
+
+\DeclareOption{English}
+    {\renewcommand{\baselinestretch}{2}%double line spacing
+    \settowidth{\parindent}{~~~~~}%five space indent
+    \theoremstyle{definition}%
+    \newtheorem{definition}{Def}%
+    \newtheorem*{definition*}{Def}%
+    \newtheorem{theorem}{Thm}%
+    \newtheorem*{theorem*}{Thm}%
+    \newtheorem{proposition}{Prop}%
+    \newtheorem*{proposition*}{Prop}%
+    \newtheorem{lemma}{Lem}%
+    \newtheorem*{lemma*}{Lem}%
+    \newtheorem{remark}{Rem}
+    \newcommand*{\figref}[1]{Figure~\ref{#1}}
+    \newcommand*{\tabref}[1]{Table~\ref{#1}}
+    \newcommand*{\eqnref}[1]{\eqref{#1}}
+}
+
+\DeclareOption{Japanese}%
+    {\theoremstyle{definition}%
+    \newtheorem{definition}{定義}%
+    \newtheorem*{definition*}{定義}%
+    \newtheorem{theorem}{定理}%
+    \newtheorem*{theorem*}{定理}%
+    \newtheorem{proposition}{命題}%
+    \newtheorem*{proposition*}{命題}%
+    \newtheorem{lemma}{補題}%
+    \newtheorem*{lemma*}{補題}%
+    \newtheorem{remark}{注意}%
+    \newtheorem{remark*}{注意}%
+    \newtheorem{example}{例}%
+    \newtheorem{example*}{例}%
+
+    \renewcommand{\proofname}{\textgt{証明}}% 証明につくProof.を変える
+    \newcommand*{\figref}[1]{図~\ref{#1}}
+    \newcommand*{\tabref}[1]{表~\ref{#1}}
+    \newcommand*{\eqnref}[1]{式~\eqref{#1}}
+    }
+
+
+\ProcessOptions\relax
+
+\numberwithin{definition}{section}
+\numberwithin{theorem}{section}
+\numberwithin{proposition}{section}
+\numberwithin{lemma}{section}
+\numberwithin{remark}{section}
+\numberwithin{example}{section}
+
+% 参照した数式にのみ数式番号をつける
+% \RequirePackage{mathtools}
+% \mathtoolsset{showonlyrefs=true}
+
+% \renewcommand{\baselinestretch}{2} % double line spacing
+
+
+% Macros
+\newcommand*{\uhref}[2]{\underbar{\href{#1}{#2}}} % underlined href
+\newcommand*{\uurl}[1]{\underbar{\url{#1}}} % underlined url
+\newcommand*{\uhyperref}[2][0]{%
+\ifx#1 0%
+{\underbar{\hyperref{#2}}}%
+\else%
+{\underbar{\hyperref[#1]{#2}}}\fi%
+} % underlined url
+
+\renewcommand{\deg}{\mbox{\textdegree}}
+\newcommand{\degC}{{}^\circ\!\mathrm{C}}
+\newcommand{\degF}{{}^\circ\!\mathrm{F}}
+
+
+% copied from: http://kir018304.kir.jp/nc/htdocs/?page_id=21
+% for more manuals, check `unit.pdf` in the website.
+\newcommand*{\U}[1]{{%
+\renewcommand{\O}{\mbox{O}}
+\renewcommand{\u}{\mbox{u}}
+\mathcode`\u=\mu
+\mathcode`\O=\Omega
+\newcommand{\udot}{\mathord{\cdot}}
+\,\mathrm{#1}}}
+
+\newcommand*{\iU}[1]{{%
+\renewcommand{\O}{\mbox{O}}
+\renewcommand{\u}{\mbox{u}}
+\mathcode`\u=\mu
+\mathcode`\O=\Omega
+\newcommand{\udot}{\mathord{\cdot}}
+\mathrm{#1}}}
+
+\newcommand*{\sub}[1]{_{\mathrm{#1}}} % 引数を下付き文字にする
+\newcommand*{\sur}[1]{^{\mathrm{#1}}} % 引数を上付き文字にする
+
+\newcommand{\ii}{{\mathrm{i}}} % ローマン体i．虚数単位
+
+\newcommand{\jj}{\,\mathrm{j}} % ローマン体j．虚数単位
+
+\newcommand{\ee}{{\mathrm{e}}} % ローマン体e．ネイピア数
+
+\newcommand{\dd}{{\mathrm{d}}} % ローマン体d．微分演算子
+
+\renewcommand{\Re}{\operatorname{\mathrm{Re}}} % ローマン体Re．実部
+\renewcommand{\Im}{\operatorname{\mathrm{Im}}} % ローマン体Im．虚部
+% These two overrides default `\Re` and `\Im` command, which represent real/imaginary set and is seldom used in engineering context
+% If that is a problem for you, use another command name.
+
+\newcommand{\cc}{\mbox{c.c.}} % complex conjugate
+
+\newcommand{\Hc}{\mbox{H.c.}} % hermitian conjugate
+
+\newcommand*{\bra}[1]{\langle\mbox{$#1$}|} % 引数を１つ取り，braで囲う
+
+\newcommand*{\ket}[1]{|\mbox{$#1$}\rangle} % 引数を１つ取り，ketで囲う
+
+\NewDocumentCommand{\bracket}{moo}{\langle#1\IfValueT{#2}{|#2}\IfValueT{#3}{|#3}\rangle}
+
+\newcommand{\diver}{\operatorname{\mathrm{div}}} % ローマン体div. 発散
+
+\newcommand{\curl}{\operatorname{\mathrm{curl}}} % ローマン体curl. 回転
+
+\newcommand{\rot}{\operatorname{\mathrm{rot}}} % ローマン体rot. 回転
+
+\newcommand{\grad}{\operatorname{\mathrm{grad}}} % ローマン体grad. 勾配
+
+\newcommand*{\vct}[1]{\bm{#1}}% 引数をベクトルっぽい太文字にする
+
+\newcommand{\defeq}{\stackrel{\mathrm{def}}{=}} % イコールの上にdefとついたもの．定義記号
+
+\newcommand*{\ph}[1]{\tilde{#1}} % 引数の上にチルダをつける．フェーザ
+
+\NewDocumentCommand{\dif}{ommoo}{%
+\frac{\dd \IfValueTF{#1}{^#1}{\IfValueTF{#5}{^3}{\IfValueT{#4}{^2}}}%
+#2%
+}{%
+\dd #3\IfValueTF{#1}{^#1}{}%
+\IfValueT{#4}{\dd #4}%
+\IfValueT{#5}{\dd #5}%
+}%
+}
+\NewDocumentCommand{\pdif}{ommoo}{%
+    \frac{\partial \IfValueTF{#1}{^#1}{\IfValueTF{#5}{^3}{\IfValueT{#4}{^2}}}%
+#2%
+}{%
+\partial #3\IfValueTF{#1}{^#1}{}%
+\IfValueT{#4}{\partial #4}%
+\IfValueT{#5}{\partial #5}%
+}%
+}
+\NewDocumentCommand{\ddif}{ommoo}{%
+\dfrac{\dd \IfValueTF{#1}{^#1}{\IfValueTF{#5}{^3}{\IfValueT{#4}{^2}}}%
+#2%
+}{%
+\dd #3\IfValueTF{#1}{^#1}{}%
+\IfValueT{#4}{\dd #4}%
+\IfValueT{#5}{\dd #5}%
+}%
+}
+\NewDocumentCommand{\dpdif}{ommoo}{%
+\dfrac{\partial \IfValueTF{#1}{^#1}{\IfValueTF{#5}{^3}{\IfValueT{#4}{^2}}}%
+#2%
+}{%
+\partial #3\IfValueTF{#1}{^#1}{}%
+\IfValueT{#4}{\partial #4}%
+\IfValueT{#5}{\partial #5}%
+}%
+}
+\NewDocumentCommand{\ffrac}{mm}{\left.#1\middle/#2\right.}
+\NewDocumentCommand{\fdif}{ommoo}{%
+\dd \IfValueTF{#1}{^#1}{\IfValueTF{#5}{^3}{\IfValueT{#4}{^2}}}%
+#2%
+/%
+\dd #3\IfValueTF{#1}{^#1}{}%
+\IfValueT{#4}{\dd #4}%
+\IfValueT{#5}{\dd #5}%
+}
+\NewDocumentCommand{\fpdif}{ommoo}{%
+\partial \IfValueTF{#1}{^#1}{\IfValueTF{#5}{^3}{\IfValueT{#4}{^2}}}%
+#2%
+/%
+\partial #3\IfValueTF{#1}{^#1}{}%
+\IfValueT{#4}{\partial #4}%
+\IfValueT{#5}{\partial #5}%
+}
+
+\newcommand{\N}{\mathbb{N}} % 自然数
+\newcommand{\Z}{\mathbb{Z}} % 整数
+\newcommand{\Q}{\mathbb{Q}} % 有理数
+\newcommand{\R}{\mathbb{R}} % 実数
+\newcommand{\C}{\mathbb{C}} % 複素数
+
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} % 絶対値
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} % ノルム
+
+\NewDocumentCommand{\wcond}{mm}{\left.#1\right|_{#2}}
+
+\newcommand{\transposed}[1]{#1^\top}
+\newcommand{\trpd}{\transposed}
