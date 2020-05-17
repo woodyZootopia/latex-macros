@@ -1,6 +1,6 @@
 \documentclass[12pt,a4paper,titlepage,dvipdfmx]{bxjsarticle}
 % \usepackage[margin=2cm]{geometry}
-\usepackage[Japanese]{../macros}
+\usepackage[Japanese]{/home/woody/Documents/macros/macros}
 %
 \title{日本語レポートの書き方\\with スタイルファイル\texttt{macros}}
 \author{Woody}
@@ -32,16 +32,17 @@
 \end{lstlisting}
 などと記入\footnote{geometryはmarginの設定など個人ごとに内容が大きく違うと思うのでスタイルファイルに含めなかった．}
 したあと，
-\verb+macros.sty+を\LaTeX{}ファイルと同じ場所にコピーして，
+\verb+macros.sty, macros-maths.sty+を\LaTeX{}ファイルと同じ場所にコピーして，
 \begin{lstlisting}
 \usepackage[Japanese]{../macros}
 \end{lstlisting}
 と続けて記入する．これにより，標準的なレポートに必要なパッケージはすべて読み込まれる
-ので，プリアンブルはこれだけでよい．\footnote{作者の好みにより，必要なパッケージが一括で読み込まれるようにした．}
+ので，プリアンブルはこれだけでよい\footnote{作者の好みにより，必要なパッケージが一括で読み込まれるようにした．}
+．
 
 ただし，作者の環境は
 \texttt{Ubuntu 19.04 + TeXLive 2019}でインストールされたp\LaTeXe{}
-であり，それ以外の環境ではうまく動かない可能性があることを了承してほしい．
+であり，それ以外の環境ではうまく動かない可能性がある．
 
 \subsection{英文を書くときは}
 オプション引数を変えて
@@ -160,9 +161,9 @@ bounding box周りの面倒事にも悩まされなくてすむので，PDFフ�
 \begin{align}
   \begin{cases}
     \nabla \cdot \bm{B}(t,\bm{x}) &= 0 \\
-    \nabla \times \bm{E}(t,\bm{x}) + {\dpdif {\bm{B}(t,\bm{x})}{t}} &= 0 \\
+    \nabla \times \bm{E}(t,\bm{x}) + {\fracpd {\bm{B}(t,\bm{x})}{t}} &= 0 \\
     \nabla \cdot \bm{D}(t,\bm{x}) &= \rho (t,\bm{x}) \\
-    \nabla \times \bm{H}(t,\bm{x})-{\dpdif {\bm{D}(t,\bm{x})}{t}} &= \bm{j}(t,\bm{x})
+    \nabla \times \bm{H}(t,\bm{x})-{\fracpd {\bm{D}(t,\bm{x})}{t}} &= \bm{j}(t,\bm{x})
     \label{eqn:maxwell}
   \end{cases}
 \end{align}
@@ -178,7 +179,7 @@ bounding box周りの面倒事にも悩まされなくてすむので，PDFフ�
 \end{itemize}
 
 また，URLを隠したい場合は，\verb+\href{https://...}{代替テキスト}+が使える．
-見た目がキレイになるが，印刷するためのレポートに使っても当然意味はない．
+見た目がキレイになるが，印刷するためのレポートには使っても意味がない．
 
 
 \begin{itemize}
@@ -263,12 +264,12 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 \verb`\ph{E}`                                  & $\ph{E}$                  & フェーザ                      & \verb`\tilde{E}`に同じ                      \\
 \verb`\dot{E}`                                 & $\dot{E}$                 & フェーザ・微分                & 標準コマンド                                \\
 \verb`\ddot{x}`                                & $\ddot{x}$                & 二階微分                      & 三階，四階も同様                            \\
-\verb`\dif{x}{t}`                            & $\dif{x}{t}$            & 微分                          & 下に示すような派生があり,組み合わせて使える \\
-\verb`\dif[n]{x}{t}`                         & $\dif[n]{x}{t}$         & n階微分                       & オプション引数をつける                      \\
-\verb`\ddif{x}{t}`                           & $\ddif{x}{t}$           & 微分（\texttt{displaystyle}） & 前にdをつける                               \\
-\verb`\pdif{P}{q}`                           & $\pdif{P}{q}$           & 偏微分                        & partial differentiationの意                 \\
-\verb`\fdif{P}{q}`                           & $\fdif{P}{q}$           & 偏微分                        & flat fracの意                               \\
-\verb`\pdif{P}{q}[r][s]`                     & $\pdif{P}{q}[r][s]$     & 偏微分                        & オプション引数で合計3個まで                 \\
+\verb`\fracd{x}{t}`                            & $\fracd{x}{t}$            & 微分                          & 下に示すような派生があり,組み合わせて使える \\
+\verb`\fracd[n]{x}{t}`                         & $\fracd[n]{x}{t}$         & n階微分                       & オプション引数をつける                      \\
+\verb`\dfracd{x}{t}`                           & $\dfracd{x}{t}$           & 微分（\texttt{displaystyle}） & 前にdをつける                               \\
+\verb`\fracpd{P}{q}`                           & $\fracpd{P}{q}$           & 偏微分                        & partial differentiationの意                 \\
+\verb`\ffracd{P}{q}`                           & $\ffracd{P}{q}$           & 偏微分                        & flat fracの意                               \\
+\verb`\fracpd{P}{q}[r][s]`                     & $\fracpd{P}{q}[r][s]$     & 偏微分                        & オプション引数で合計3個まで                 \\
 \verb`\N`                                      & $\N$                      & 自然数全体の集合              & $\Z,\Q,\R,\C$も同様\cite{y.}                \\
 \verb`\abs{x}`                                 & $\abs{x}$                 & 絶対値                        & \cite{y.}                                   \\
 \verb`\norm{x}`                                & $\norm{x}$                & ノルム                        & \cite{y.}                                   \\
