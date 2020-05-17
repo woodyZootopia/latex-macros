@@ -1,0 +1,160 @@
+\RequirePackage{xparse}
+% Macros
+\newcommand*{\uhref}[2]{\underbar{\href{#1}{#2}}} % underlined href
+\newcommand*{\uurl}[1]{\underbar{\url{#1}}} % underlined url
+\newcommand*{\uhyperref}[2][0]{%
+\ifx#1 0%
+{\underbar{\hyperref{#2}}}%
+\else%
+{\underbar{\hyperref[#1]{#2}}}\fi%
+} % underlined url
+
+\renewcommand{\deg}{\mbox{\textdegree}}
+\newcommand{\degC}{{}^\circ\!\mathrm{C}}
+\newcommand{\degF}{{}^\circ\!\mathrm{F}}
+
+
+% copied from: http://kir018304.kir.jp/nc/htdocs/?page_id=21
+% for more manuals, check `unit.pdf` in the website.
+\newcommand*{\U}[1]{{%
+\renewcommand{\O}{\mbox{O}}
+\renewcommand{\u}{\mbox{u}}
+\mathcode`\u=\mu
+\mathcode`\O=\Omega
+\newcommand{\udot}{\mathord{\cdot}}
+\,\mathrm{#1}}}
+
+\newcommand*{\iU}[1]{{%
+\renewcommand{\O}{\mbox{O}}
+\renewcommand{\u}{\mbox{u}}
+\mathcode`\u=\mu
+\mathcode`\O=\Omega
+\newcommand{\udot}{\mathord{\cdot}}
+\mathrm{#1}}}
+
+\newcommand*{\sub}[1]{_{\mathrm{#1}}} % 引数を下付き文字にする
+\newcommand*{\sur}[1]{^{\mathrm{#1}}} % 引数を上付き文字にする
+
+\newcommand{\ii}{{\mathrm{i}}} % ローマン体i．虚数単位
+
+\newcommand{\jj}{\,\mathrm{j}} % ローマン体j．虚数単位
+
+\newcommand{\ee}{{\mathrm{e}}} % ローマン体e．ネイピア数
+
+\newcommand{\dd}{{\mathrm{d}}} % ローマン体d．微分演算子
+
+\renewcommand{\Re}{\operatorname{\mathrm{Re}}} % ローマン体Re．実部
+\renewcommand{\Im}{\operatorname{\mathrm{Im}}} % ローマン体Im．虚部
+% These two overrides default `\Re` and `\Im` command, which represent real/imaginary set and is seldom used in engineering context
+% If that is a problem for you, use another command name.
+
+\newcommand{\cc}{\mbox{c.c.}} % complex conjugate
+
+\newcommand{\Hc}{\mbox{H.c.}} % hermitian conjugate
+
+\newcommand*{\bra}[1]{\langle\mbox{$#1$}|} % 引数を１つ取り，braで囲う
+
+\newcommand*{\ket}[1]{|\mbox{$#1$}\rangle} % 引数を１つ取り，ketで囲う
+
+\NewDocumentCommand{\bracket}{moo}{\langle#1\IfValueT{#2}{|#2}\IfValueT{#3}{|#3}\rangle}
+
+\newcommand{\diver}{\operatorname{\mathrm{div}}} % ローマン体div. 発散
+
+\newcommand{\curl}{\operatorname{\mathrm{curl}}} % ローマン体curl. 回転
+
+\newcommand{\rot}{\operatorname{\mathrm{rot}}} % ローマン体rot. 回転
+
+\newcommand{\grad}{\operatorname{\mathrm{grad}}} % ローマン体grad. 勾配
+
+\newcommand*{\vct}[1]{\bm{#1}}% 引数をベクトルっぽい太文字にする
+
+\newcommand{\defeq}{\stackrel{\mathrm{def}}{=}} % イコールの上にdefとついたもの．定義記号
+
+\newcommand*{\ph}[1]{\tilde{#1}} % 引数の上にチルダをつける．フェーザ
+
+\NewDocumentCommand{\fracd}{ommoo}{%
+\frac{\dd \IfValueTF{#1}{^#1}{\IfValueTF{#5}{^3}{\IfValueT{#4}{^2}}}%
+#2%
+}{%
+\dd #3\IfValueTF{#1}{^#1}{}%
+\IfValueT{#4}{\dd #4}%
+\IfValueT{#5}{\dd #5}%
+}%
+}
+\NewDocumentCommand{\fracpd}{ommoo}{%
+    \frac{\partial \IfValueTF{#1}{^#1}{\IfValueTF{#5}{^3}{\IfValueT{#4}{^2}}}%
+#2%
+}{%
+\partial #3\IfValueTF{#1}{^#1}{}%
+\IfValueT{#4}{\partial #4}%
+\IfValueT{#5}{\partial #5}%
+}%
+}
+\NewDocumentCommand{\dfracd}{ommoo}{%
+\dfrac{\dd \IfValueTF{#1}{^#1}{\IfValueTF{#5}{^3}{\IfValueT{#4}{^2}}}%
+#2%
+}{%
+\dd #3\IfValueTF{#1}{^#1}{}%
+\IfValueT{#4}{\dd #4}%
+\IfValueT{#5}{\dd #5}%
+}%
+}
+\NewDocumentCommand{\dfracpd}{ommoo}{%
+\dfrac{\partial \IfValueTF{#1}{^#1}{\IfValueTF{#5}{^3}{\IfValueT{#4}{^2}}}%
+#2%
+}{%
+\partial #3\IfValueTF{#1}{^#1}{}%
+\IfValueT{#4}{\partial #4}%
+\IfValueT{#5}{\partial #5}%
+}%
+}
+\NewDocumentCommand{\ffrac}{mm}{\left.#1\middle/#2\right.}
+\NewDocumentCommand{\ddfrac}{mm}{\frac{\displaystyle#1}{\displaystyle#2}}
+\NewDocumentCommand{\ffracd}{ommoo}{%
+\dd \IfValueTF{#1}{^#1}{\IfValueTF{#5}{^3}{\IfValueT{#4}{^2}}}%
+#2%
+/%
+\dd #3\IfValueTF{#1}{^#1}{}%
+\IfValueT{#4}{\dd #4}%
+\IfValueT{#5}{\dd #5}%
+}
+\NewDocumentCommand{\ffracpd}{ommoo}{%
+\partial \IfValueTF{#1}{^#1}{\IfValueTF{#5}{^3}{\IfValueT{#4}{^2}}}%
+#2%
+/%
+\partial #3\IfValueTF{#1}{^#1}{}%
+\IfValueT{#4}{\partial #4}%
+\IfValueT{#5}{\partial #5}%
+}
+
+\newcommand{\N}{\mathbb{N}} % 自然数
+\newcommand{\Z}{\mathbb{Z}} % 整数
+\newcommand{\Q}{\mathbb{Q}} % 有理数
+\newcommand{\R}{\mathbb{R}} % 実数
+\newcommand{\C}{\mathbb{C}} % 複素数
+\newcommand{\K}{\mathbb{K}} % 体
+\newcommand{\V}{\mathbb{V}} % ベクトル空間
+
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} % 絶対値
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} % ノルム
+
+\NewDocumentCommand{\wcond}{mm}{\left.#1\right|_{#2}}
+
+\newcommand{\transposed}[1]{#1^\top}
+\newcommand{\trpd}{\transposed}
+\newcommand{\inv}[1]{#1^{-1}}
+
+\newcommand{\paren}[1]{\left(#1\right)} % round brackets
+\newcommand{\curlyb}[1]{\left\{#1\right\}} % curly brackets
+\newcommand{\squareb}[1]{\left[#1\right]} % brackets
+\newcommand{\angles}[1]{\left<#1\right>} % brackets
+
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\newcommand{\ppvec}[1]{\overrightarrow{\mathrm{#1}}}
