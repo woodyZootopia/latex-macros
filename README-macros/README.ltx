@@ -205,83 +205,153 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 }．
 
 
-\tabref{tab:units}に使い方をまとめた．
+下に使い方をまとめた．
 
-\begin{table}[htbp]
-\caption{単位・数値の凡例}
-\centering
-\begin{tabular}{l|ll}
-文字                                                     & 見え方                                              & 備考                                 \\
-\hhline{=|==}
-\verb`1\U{kO}`                                           & $1\U{kO}$                                           &                                      \\
-\verb`10\U{ug}`                                          & $10\U{ug}$                                          &                                      \\
-\verb`f/\iU{Hz}`                                         & $f/\iU{Hz}$                                         & \tabref{tab:results}などで使っている \\
-\verb`10\U{N \udot m}`                                   & $10\U{N \udot m}$                                   & \verb`cdot`だとスペースが空く        \\
-\verb`6.67430\times 10^{-11} \U{m^3 kg^{-1} s^{-2}}`     & $6.67430\times 10^{-11} \U{m^3 kg^{-1} s^{-2}}$     & 重力定数                             \\
-\verb`6.67430\times 10^{-11} \U{m^3\, kg^{-1}\, s^{-2}}` & $6.67430\times 10^{-11} \U{m^3\, kg^{-1}\, s^{-2}}$ & スペースを入れるのもあり             \\
-\verb`100\degC`                                          & $100\degC$                                          & 水の沸点                             \\
-\verb`100\degF`                                          & $100\degF$                                          & ヒトの体温                           \\
-\verb`180\deg`                                           & $180\deg$                                           & 2直角                                \\
+\begin{itemize}
+    \item \verb`1\U{kO}`$\implies1\U{kO}$
+    \item \verb`10\U{ug}`$\implies10\U{ug}$
+    \item \verb`f/\iU{Hz}`$\implies f/\iU{Hz}$ 
 
-\end{tabular}\label{tab:units}
-\end{table}
+        単位までの間隔が狭くなる
+    \item \verb`10\U{N \udot m}`$\implies10\U{N \udot m}$ 
+
+    \verb`cdot`だとスペースが空いてしまう
+    \item \verb`6.67430\times 10^{-11} \U{m^3 kg^{-1} s^{-2}}`$\implies6.67430\times 10^{-11} \U{m^3 kg^{-1} s^{-2}}$ 
+
+    重力定数
+    \item \verb`6.67430\times 10^{-11} \U{m^3\, kg^{-1}\, s^{-2}}`$\implies6.67430\times 10^{-11} \U{m^3\, kg^{-1}\, s^{-2}}$ 
+
+    間隔を空けるのが好きならこうするのもあり
+    \item \verb`100\degC`$\implies100\degC$ 
+
+    水の沸点
+    \item \verb`100\degF`$\implies100\degF$ 
+
+    ヒトの体温
+    \item \verb`180\deg`$\implies180\deg$ 
+
+    2直角
+\end{itemize}
 
 \subsubsection{その他の記号%
 \label{otherSymbols}%
 }
 
-よく使う記号を\tabref{tab:symbols}にまとめた．
+よく使う記号を下にまとめた．
 
-\clearpage
+\begin{itemize}
+\item \verb`E\sub{in}`$\implies E\sub{in}$
 
-\begin{table}[t]
-\caption{使用頻度の高い数学記号}
-\begin{tabular}{l|ll|l}
-記法                                           & 見え方                    & 意味                          & 備考                                        \\
-\hhline{=|==|=}
-\verb`E\sub{in}`                               & $E\sub{in}$               & ローマン体下付き文字          &                                             \\
-\verb`f\sur{(n)}`                              & $f\sur{(n)}$              & ローマン体上付き文字          &                                             \\
-\verb`\ii`                                     & $\ii$                     & 虚数単位                      &                                             \\
-\verb`\jj`                                     & $\jj$                     & 虚数単位                      & 手前に小スペース（\verb`\,`）               \\
-\verb`\ee`                                     & $\ee$                     & ネイピア数                    &                                             \\
-\verb`\dd`                                     & $\dd$                     & 微分演算子                    &                                             \\
-\verb`\Re`\footnotemark[1]                     & $\Re$                     & 実部                          &                                             \\
-\verb`\Im`\footnotemark[1]                     & $\Im$                     & 虚部                          &                                             \\
-\verb`\cc`                                     & $\cc$                     & 複素共役                      & 例：$\Re z = (z+\cc)/2$                     \\
-\verb`\Hc`                                     & $\Hc$                     & エルミート共役                &                                             \\
-\verb`\bra{\phi}`                              & $\bra{\phi}$              & ブラ                          &                                             \\
-\verb`\ket{\phi}`                              & $\ket{\phi}$              & ケット                        &                                             \\
-\verb`\bracket{\phi}`                          & $\bracket{\phi}$          & ブラケット                    &                                             \\
-\verb`\bracket{\phi}[\psi]`\footnotemark[2]    & $\bracket{\phi}[\psi]$    & ブラケット                    &                                             \\
-\verb`\bracket{\phi}[A][\psi]`\footnotemark[2] & $\bracket{\phi}[A][\psi]$ & ブラケット                    &                                             \\
-\verb`\diver`                                  & $\diver$                  & 発散                          & \verb`\div`は割り算記号に予約済             \\
-\verb`\curl`                                   & $\curl$                   & 回転                          &                                             \\
-\verb`\rot`                                    & $\rot$                    & 回転                          &                                             \\
-\verb`\grad`                                   & $\grad$                   & 勾配                          &                                             \\
-\verb`\vct{ABC}`                               & $\vct{ABC}$               & ベクトル                      & \verb`\bm{ABC}`に同じ．\verb`\vec`は上矢印  \\
-\verb`A \defeq B`                              & $A \defeq B$              & 定義                          &                                             \\
-\verb`A \coloneqq B`                           & $A \coloneqq B$           & 定義                          & \texttt{mathtools}パッケージ                \\
-\verb`\ph{E}`                                  & $\ph{E}$                  & フェーザ                      & \verb`\tilde{E}`に同じ                      \\
-\verb`\dot{E}`                                 & $\dot{E}$                 & フェーザ・微分                & 標準コマンド                                \\
-\verb`\ddot{x}`                                & $\ddot{x}$                & 二階微分                      & 三階，四階も同様                            \\
-\verb`\fracd{x}{t}`                            & $\fracd{x}{t}$            & 微分                          & 下に示すような派生があり,組み合わせて使える \\
-\verb`\fracd[n]{x}{t}`                         & $\fracd[n]{x}{t}$         & n階微分                       & オプション引数をつける                      \\
-\verb`\dfracd{x}{t}`                           & $\dfracd{x}{t}$           & 微分（\texttt{displaystyle}） & 前にdをつける                               \\
-\verb`\fracpd{P}{q}`                           & $\fracpd{P}{q}$           & 偏微分                        & partial differentiationの意                 \\
-\verb`\ffracd{P}{q}`                           & $\ffracd{P}{q}$           & 偏微分                        & flat fracの意                               \\
-\verb`\fracpd{P}{q}[r][s]`                     & $\fracpd{P}{q}[r][s]$     & 偏微分                        & オプション引数で合計3個まで                 \\
-\verb`\N`                                      & $\N$                      & 自然数全体の集合              & $\Z,\Q,\R,\C$も同様\cite{y.}                \\
-\verb`\abs{x}`                                 & $\abs{x}$                 & 絶対値                        & \cite{y.}                                   \\
-\verb`\norm{x}`                                & $\norm{x}$                & ノルム                        & \cite{y.}                                   \\
-\verb`\wcond{y(x)}{x=3}`                                & $\wcond{y(x)}{x=3}$                & 条件                        & with conditionの意                                   \\
-\end{tabular}\label{tab:symbols}
-\end{table}
+ローマン体下付き文字
+\item \verb`f\sur{(n)}`$\implies f\sur{(n)}$
 
-\subsection{謝辞・参考になる資料}
+ローマン体上付き文字
+\item \verb`\ii`$\implies \ii$
+
+虚数単位
+\item \verb`\jj`$\implies \jj$
+
+虚数単位
+\item \verb`\ee`$\implies \ee$
+
+ネイピア数
+\item \verb`\dd` $\implies \dd$
+
+微分演算子
+\item \verb`\Re`\footnotemark[1] $\implies \Re$
+
+実部
+\item \verb`\Im`\footnotemark[1] $\implies \Im$
+
+虚部
+\item \verb`\cc` $\implies \cc$
+
+複素共役．例：$\Re z = (z+\cc)/2$
+\item \verb`\Hc` $\implies \Hc$
+
+エルミート共役
+\item \verb`\bra{\phi}` $\implies \bra{\phi}$
+
+ブラ
+\item \verb`\ket{\phi}` $\implies \ket{\phi}$
+
+ケット
+\item \verb`\bracket{\phi}` $\implies \bracket{\phi}$
+
+ブラケット
+\item \verb`\bracket{\phi}[\psi]`\footnotemark[2] $\implies \bracket{\phi}[\psi]$
+
+ブラケット
+\item \verb`\bracket{\phi}[A][\psi]`\footnotemark[2] $\implies \bracket{\phi}[A][\psi]$
+
+ブラケット\footnotemark[3]
+\item \verb`\diver` $\implies \diver$
+
+発散．\verb`\div`は割り算記号に予約済
+\item \verb`\curl` $\implies \curl$
+
+回転
+\item \verb`\rot` $\implies \rot$
+
+回転
+\item \verb`\grad` $\implies \grad$
+
+勾配
+\item \verb`\vct{ABC}` $\implies \vct{ABC}$
+
+ベクトル．\verb`\bm{ABC}`に同じ．\verb`\vec`は上矢印
+\item \verb`A \defeq B` $\implies A \defeq B$
+
+定義
+\item \verb`A \coloneqq B` $\implies A \coloneqq B$
+
+定義．\texttt{mathtools}パッケージ
+\item \verb`\ph{E}` $\implies \ph{E}$
+
+フェーザ．\verb`\tilde{E}`に同じ
+\item \verb`\dot{E}` $\implies \dot{E}$
+
+フェーザ・微分．標準コマンド
+\item \verb`\ddot{x}` $\implies \ddot{x}$
+
+二階微分．三階，四階も同様
+\item \verb`\fracd{x}{t}` $\implies \fracd{x}{t}$
+
+微分．下に示すような派生があり,組み合わせて使える
+\item \verb`\fracd[n]{x}{t}` $\implies \fracd[n]{x}{t}$
+
+n階微分．オプション引数をつける
+\item \verb`\dfracd{x}{t}` $\implies \dfracd{x}{t}$
+
+微分（\texttt{displaystyle}）．前にdをつける
+\item \verb`\fracpd{P}{q}` $\implies \fracpd{P}{q}$
+
+偏微分．partial differentiationの意
+\item \verb`\ffracd{P}{q}` $\implies \ffracd{P}{q}$
+
+微分．flat fracdの意
+\item \verb`\fracpd{P}{q}[r][s]` $\implies \fracpd{P}{q}[r][s]$
+
+偏微分．通常の微分変数に加えてオプション引数で2個まで微分変数を追加できる．
+\item \verb`\N` $\implies \N$
+
+自然数全体の集合．$\Z,\Q,\R,\C$も同様\cite{y.}
+\item \verb`\abs{x}` $\implies \abs{x}$
+
+絶対値．\cite{y.}
+\item \verb`\norm{x}` $\implies \norm{x}$
+
+ノルム．\cite{y.}
+\item \verb`\wcond{y(x)}{x=3}` $\implies \wcond{y(x)}{x=3}$
+
+条件．with conditionの意
+\end{itemize}
 
 \footnotetext[1]{これら２つは，\texttt{\textbackslash Re},\texttt{\textbackslash Im}という標準コマンドを上書きするが，\texttt{\textbackslash mathfrak\{R\}}$=\mathfrak{R}$などで代用可能}
 \footnotetext[2]{\texttt{[]}になってるのはオプション引数のイメージ}
-\clearpage
+\footnotetext[3]{なお、ブラケットについては\verb`braket.sty`というスタイルファイルも公開されているので、こちらを使っても良い}
+
+\subsection{謝辞・参考になる資料}
 
 \cite{heiho}は実験レポートづくりのたたき台として役にたつ．
 このPDFはこれに触発されて作った．
