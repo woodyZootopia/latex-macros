@@ -2,7 +2,7 @@
 % \usepackage[margin=2cm]{geometry}
 \usepackage[Japanese]{../macros}
 %
-\title{日本語レポートの書き方\\with スタイルファイル\texttt{macros}}
+\title{スタイルファイル\texttt{macros}の使い方}
 \author{Woody}
 %
 \begin{document}
@@ -16,7 +16,7 @@
 \section{はじめに}
 
 このPDFでは，自分が実験のレポートを\LaTeX{}で書くときに調べた情報をまとめている．
-また，理系（特に電気電子工学）向けに作成した，レポート用スタイルファイル\texttt{macros.sty}で使用可能になるコマンドの使い方を書いている．
+また，その過程で理系（特に電気電子工学）向けに作成した，レポート用スタイルファイル\texttt{macros.sty}で使用可能になるコマンドの使い方を書いている．
 
 \section{スタイルファイルの使い方}
 
@@ -190,7 +190,9 @@ bounding box周りの面倒事にも悩まされなくてすむので，PDFフ�
 
 \subsection{数式の記法}
 
-\subsubsection{単位の書き方}
+\subsubsection{単位の書き方%
+\label{unitCommand}
+}
 
 Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる．
 この中ではアルファベットはローマン体になり，
@@ -371,7 +373,7 @@ n階微分．オプション引数をつける
 \texttt{macros.sty}における数式コマンドは比較的入力文字数を削減するように設計しているが，
 細かい設定が可能なテキストエディタを使っている人はスニペットを登録するとさらにすばやく入力できるかもしれない．
 例えば，Vimでそのような設定をする方法については拙稿
-（\uhref{https://woodyzootopia.github.io/2020/02/vim-\%E3\%82\%B9\%E3\%83\%8B\%E3\%83\%9A\%E3\%83\%83\%E3\%83\%88\%E3\%81\%AE\%E5\%8A\%9B\%E3\%81\%A7latex\%E3\%82\%82\%E3\%82\%B5\%E3\%82\%AF\%E3\%82\%B5\%E3\%82\%AF\%E5\%85\%A5\%E5\%8A\%9B/}{Vim+スニペットの力でLaTeXもサクサク入力}）
+\uhref{https://woodyzootopia.github.io/2020/02/vim-\%E3\%82\%B9\%E3\%83\%8B\%E3\%83\%9A\%E3\%83\%83\%E3\%83\%88\%E3\%81\%AE\%E5\%8A\%9B\%E3\%81\%A7latex\%E3\%82\%82\%E3\%82\%B5\%E3\%82\%AF\%E3\%82\%B5\%E3\%82\%AF\%E5\%85\%A5\%E5\%8A\%9B/}{Vimとスニペットの力でLaTeXもサクサク入力}
 を参照されたし．
 
 \begin{thebibliography}{9}
@@ -381,7 +383,7 @@ n階微分．オプション引数をつける
 \bibitem[北野, 2004]{kitano} Masao Kitano. ``\uhref{http://kir018304.kir.jp/nc/htdocs/?page_id=21}{Unit.sty --- A small macro package for physical formulas}''. 2004.
 
 単位，数式の様々な便利な略記法がのっているスタイルファイル．
-\uhyperref[otherSymbols]{その他の記号}の節はおもにこれによった．
+\uhyperref[unitCommand]{単位の書き方}，\uhyperref[otherSymbols]{その他の記号}の節はおもにこれによった．
 
 \bibitem[y., 2016]{y.} y. \uhref{http://iso.2022.jp/math/texintro2016/resume.pdf}{\TeX{}講習会資料}. 2016.
 
