@@ -391,6 +391,39 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 条件．with conditionの意
 \end{itemize}
 
+\section{ハコモノ}
+
+\begin{verbatim}
+    \begin{environment}
+        （内容）
+    \end{environment}
+\end{verbatim}
+で囲うことで箱を作ることができる．\verb`environment`の部分には
+\begin{itemize}
+    \item \texttt{definition} $\implies$ 定義
+    \item \texttt{theorem} $\implies$ 定理
+    \item \texttt{proposition} $\implies$ 命題
+    \item \texttt{corollary} $\implies$ 系
+    \item \texttt{lemma} $\implies$ 補題
+    \item \texttt{remark} $\implies$ 注意
+    \item \texttt{example} $\implies$ 例
+    \item \texttt{problem} $\implies$ 問題
+\end{itemize}
+のどれかを入れる．
+例えば
+\begin{verbatim}
+    \begin{example}
+        このような箱を作ることができる．
+    \end{example}
+\end{verbatim}
+と入力することで
+\begin{example}
+    このような箱を作ることができる．
+\end{example}
+\begin{remark}
+    上に上げたもの以外でハコを作りたい場合は\texttt{macros.sty}のソースコードを修正してね．
+\end{remark}
+
 
 \section{参考になる資料}
 
