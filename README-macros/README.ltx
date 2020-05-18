@@ -15,10 +15,32 @@
 
 \section{はじめに}
 
-このPDFでは，自分が実験のレポートを\LaTeX{}で書くときに調べた情報をまとめている．
-また，その過程で理系（特に電気電子工学）向けに作成した，レポート用スタイルファイル\texttt{macros.sty}で使用可能になるコマンドの使い方を書いている．
+このPDFは，自分がレポートを\LaTeX{}で書く方法を模索する過程で理系（特に電気電子工学）向けに作成した，
+レポート用スタイルファイル\texttt{macros.sty}の使い方を書いている．
 
-\section{スタイルファイルの使い方}
+\texttt{macros.sty}を使うと，
+
+\begin{itemize}
+    \item プリアンブルに1行書き込むだけでよく使われるパッケージが全て読み込まれる
+    \item よく使われる数学記号，表や図，式への参照などのための略記コマンドが全て読み込まれる
+\end{itemize}
+
+ため，様々な種類のパッケージをいちいち\verb`\usepackage`したり，複雑な数式コマンドを手で入力するのに煩わされずにすむ．
+
+反面，不要なパッケージも読み込んで文書をコンパイルするため，コンパイル時間が長くなっている可能性がある．
+少しでも早くコンパイルしたい人には向いていないだろう．
+また，数は少ないものの標準のコマンドを上書きしているものもあるので，既存の文書をこのスタイルファイルでコンパイルしようとすると
+予期せぬ結果になる可能性がある．
+
+ただし，\texttt{macros.sty}を作るのに使われている命令はほとんど基本的なものばかりなので，
+このPDFと見比べながらソースコードを読めば誰でも理解することができるだろう．
+気に入らない仕様があれば，自分で使いやすいように修正したりして使ってほしい
+\footnote{もしおすすめの修正があれば教えてください}
+．
+
+なお，作者の環境はup\LaTeX{}である．
+
+\section{スタイルファイルのインストール}
 
 \LaTeX{}ファイルのプリアンブルに普段どおり
 \begin{lstlisting}
@@ -28,26 +50,20 @@
 や
 \begin{lstlisting}
 \documentclass[12pt,a4paper,titlepage,dvipdfmx]{bxjsarticle}
-% \usepackage[margin=2cm]{geometry}
 \end{lstlisting}
 などと記入\footnote{geometryはmarginの設定など個人ごとに内容が大きく違うと思うのでスタイルファイルに含めなかった．}
 したあと，
 \verb+macros.sty, macros-maths.sty+を\LaTeX{}ファイルと同じ場所にコピーして，
 \begin{lstlisting}
-\usepackage[Japanese]{../macros}
+\usepackage[Japanese]{macros}
 \end{lstlisting}
 と続けて記入する．これにより，標準的なレポートに必要なパッケージはすべて読み込まれる
-ので，プリアンブルはこれだけでよい\footnote{作者の好みにより，必要なパッケージが一括で読み込まれるようにした．}
-．
+ので，プリアンブルはこれだけでよい．
 
-ただし，作者の環境は
-\texttt{Ubuntu 19.04 + TeXLive 2019}でインストールされたp\LaTeXe{}
-であり，それ以外の環境ではうまく動かない可能性がある．
-
-\subsection{英文を書くときは}
+\subsection{英文レポートを書くときは}
 オプション引数を変えて
 \begin{lstlisting}
-\usepackage[English]{../macros}
+\usepackage[English]{macros}
 \end{lstlisting}
 とすればよい．
 
@@ -148,10 +164,10 @@ bounding box周りの面倒事にも悩まされなくてすむので，PDFフ�
 
 \verb+\eqnref{...}+で参照できる．
 
-例：\eqnref{eqn:sc},\eqnref{eqn:maxwell}．
+例：\eqnref{eqn:sc}, \eqnref{eqn:maxwell}．
 
 \begin{equation}
-  I = I_{ph} - I_{d} = I_{ph} - I_0\left\{\exp\left(\frac{qV}{nkT}\right)-1\right\}
+  I = I\sub{ph} - I\sub{d} = I\sub{ph} - I_0\left\{\exp\left(\frac{qV}{nkT}\right)-1\right\}
   \label{eqn:sc}
 \end{equation}
 
@@ -215,10 +231,14 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
     \item \verb`10\U{N \udot m}`$\implies10\U{N \udot m}$ 
 
     \verb`cdot`だとスペースが空いてしまう
-    \item \verb`6.67430\times 10^{-11} \U{m^3 kg^{-1} s^{-2}}`$\implies6.67430\times 10^{-11} \U{m^3 kg^{-1} s^{-2}}$ 
+    \item \verb`6.67430\times 10^{-11} \U{m^3 kg^{-1} s^{-2}}`
+
+    $\implies6.67430\times 10^{-11} \U{m^3 kg^{-1} s^{-2}}$ 
 
     重力定数
-    \item \verb`6.67430\times 10^{-11} \U{m^3\, kg^{-1}\, s^{-2}}`$\implies6.67430\times 10^{-11} \U{m^3\, kg^{-1}\, s^{-2}}$ 
+    \item \verb`6.67430\times 10^{-11} \U{m^3\, kg^{-1}\, s^{-2}}`
+
+    $\implies6.67430\times 10^{-11} \U{m^3\, kg^{-1}\, s^{-2}}$ 
 
     間隔を空けるのが好きならこうするのもあり
     \item \verb`100\degC`$\implies100\degC$ 
@@ -337,7 +357,7 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 \begin{itemize}
 \item \verb`\fracd{x}{t}` $\implies \fracd{x}{t}$
 
-微分．frac differentiationの意
+微分．後ろについているdはdifferentiationの意
 \item \verb`\fracd[n]{x}{t}` $\implies \fracd[n]{x}{t}$
 
 オプション引数をつけるとn階微分になる．
@@ -357,6 +377,7 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 
 \begin{remark}
     前や後ろにつけるp,d,fは組み合わせて使うこともできる．
+    たとえば，\verb`\ffracpd`というコマンドが使える．
 \end{remark}
 
 \subsubsection{その他数式}
@@ -437,15 +458,16 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 \TeX{}をローカルに導入しているならコマンド一つ（\texttt{texdoc platexsheet}）で手軽に読むことができる．
 
 \cite{y.}は数学系の文章の書き方についてよくまとまっている．数式の記法について調べたいときに参考になる．
+
 \cite{oda:95}は少し古いうえ\TeX{}向けに書かれたものだが，数式・英文の記法に関してとても内容が充実している．
 
 \cite{NN}は\hologo{BibTeX}の使い方についてわかりやすく解説している．参考文献の付け方について参考になる．
 
 \texttt{macros.sty}における数式コマンドは比較的入力文字数を削減するように設計しているが，
 細かい設定が可能なテキストエディタを使っている人はスニペットを登録するとさらにすばやく入力できるかもしれない．
-例えば，Vimでそのような設定をする方法については拙稿
+例えば，Vimでそのような設定をする方法については拙稿 
 \uhref{https://woodyzootopia.github.io/2020/02/vim-\%E3\%82\%B9\%E3\%83\%8B\%E3\%83\%9A\%E3\%83\%83\%E3\%83\%88\%E3\%81\%AE\%E5\%8A\%9B\%E3\%81\%A7latex\%E3\%82\%82\%E3\%82\%B5\%E3\%82\%AF\%E3\%82\%B5\%E3\%82\%AF\%E5\%85\%A5\%E5\%8A\%9B/}{Vimとスニペットの力でLaTeXもサクサク入力}
-を参照されたし．
+ を参照してほしい．
 
 \begin{thebibliography}{9}
 

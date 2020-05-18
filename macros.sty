@@ -21,7 +21,8 @@
 \RequirePackage{url}                          % enables url
 \urlstyle{same}
 \RequirePackage{pxrubrica}                    % enables ruby of japanese
-\RequirePackage[deluxe,expert,uplatex]{otf}           % enables use of opentype font
+% \RequirePackage[deluxe,expert,uplatex]{otf}           % enables use of opentype font
+% uplatexを使っていない人は，オプションからuplatexを削除してください
 % \RequirePackage[noto]{pxchfon}                % optional: use Google's Noto Font
 \RequirePackage{nimbusserif}                  % times for roman text
 \RequirePackage{tcolorbox}
@@ -38,7 +39,7 @@
 \RequirePackage{xifthen}
 \RequirePackage{pdfpages}
 \RequirePackage{transparent}
-\RequirePackage{hologo}
+\RequirePackage{hologo} % logo
 
 % listingsの設定
 \lstset{
@@ -110,4 +111,5 @@
 
 % \renewcommand{\baselinestretch}{2} % double line spacing
 
+% 数式関係は分離している
 \input{/home/woody/Documents/macros/macros-maths.sty}
