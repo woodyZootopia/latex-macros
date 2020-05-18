@@ -76,16 +76,16 @@
 例：\tabref{tab:results}を参照
 
 \begin{table}[H]
-\centering
-\caption{実験結果}
-\begin{tabular}{|r|r|r|r|}
-\hline
-$f/\iU{Hz}$ & $|E_{i}|/\iU{V}$ & $|E_{o}|/\iU{V}$ & $\theta/\iU{deg}$ \\ \hline
-50         & 4.1                & 0.056              & 90               \\ \hline
-100        & 4.1                & 0.092              & 90               \\ \hline
-500        & 4.1                & 0.424              & 83.5             \\ \hline
-700        & 4.1                & 0.577              & 80.5             \\ \hline
-\end{tabular}\label{tab:results}
+    \centering
+    \caption{実験結果}
+    \begin{tabular}{|r|r|r|r|}
+        \hline
+        $f/\iU{Hz}$ & $|E_{i}|/\iU{V}$ & $|E_{o}|/\iU{V}$ & $\theta/\iU{deg}$ \\ \hline
+        50         & 4.1                & 0.056              & 90               \\ \hline
+        100        & 4.1                & 0.092              & 90               \\ \hline
+        500        & 4.1                & 0.424              & 83.5             \\ \hline
+        700        & 4.1                & 0.577              & 80.5             \\ \hline
+    \end{tabular}\label{tab:results}
 \end{table}
 
 \subsection{図}
@@ -110,9 +110,8 @@ $f/\iU{Hz}$ & $|E_{i}|/\iU{V}$ & $|E_{o}|/\iU{V}$ & $\theta/\iU{deg}$ \\ \hline
 bounding box周りの面倒事にも悩まされなくてすむので，PDFファイルのほうが使いやすい．
 大きなデメリットもないので，可能ならPDF形式で画像を保存しておくのが良いだろう
 \footnote{なお，EPSファイルはデメリットばかりというわけでもないようだ．golden lucky氏が
-\uhref{https://golden-lucky.hatenablog.com/entry/2018/12/04/183000\#LaTeX\%E6\%96\%87\%E6\%9B\%B8\%E3\%81\%AB\%E3\%81\%8A\%E3\%81\%84\%E3\%81\%A6EPS\%E3\%81\%AF\%E3\%81\%A9\%E3\%81\%86\%E6\%89\%B1\%E3\%82\%8F\%E3\%82\%8C\%E3\%82\%8B\%E3\%81\%8B}
-{論じている}
-ように，純粋なテキストファイルなので，テキストエディタで編集でき，バージョン管理が容易というメリットもある}
+    \uhref{https://golden-lucky.hatenablog.com/entry/2018/12/04/183000\#LaTeX\%E6\%96\%87\%E6\%9B\%B8\%E3\%81\%AB\%E3\%81\%8A\%E3\%81\%84\%E3\%81\%A6EPS\%E3\%81\%AF\%E3\%81\%A9\%E3\%81\%86\%E6\%89\%B1\%E3\%82\%8F\%E3\%82\%8C\%E3\%82\%8B\%E3\%81\%8B}{論じている}
+    ように，純粋なテキストファイルなので，テキストエディタで編集でき，バージョン管理が容易というメリットもある}
 ．
 
 \subsection{回路図}
@@ -167,18 +166,18 @@ bounding box周りの面倒事にも悩まされなくてすむので，PDFフ�
 例：\eqnref{eqn:sc}, \eqnref{eqn:maxwell}．
 
 \begin{equation}
-  I = I\sub{ph} - I\sub{d} = I\sub{ph} - I_0\left\{\exp\left(\frac{qV}{nkT}\right)-1\right\}
-  \label{eqn:sc}
+    I = I\sub{ph} - I\sub{d} = I\sub{ph} - I_0\left\{\exp\left(\frac{qV}{nkT}\right)-1\right\}
+    \label{eqn:sc}
 \end{equation}
 
 \begin{align}
-  \begin{cases}
-    \nabla \cdot \bm{B}(t,\bm{x}) &= 0 \\
-    \nabla \times \bm{E}(t,\bm{x}) + {\fracpd {\bm{B}(t,\bm{x})}{t}} &= 0 \\
-    \nabla \cdot \bm{D}(t,\bm{x}) &= \rho (t,\bm{x}) \\
-    \nabla \times \bm{H}(t,\bm{x})-{\fracpd {\bm{D}(t,\bm{x})}{t}} &= \bm{j}(t,\bm{x})
-    \label{eqn:maxwell}
-  \end{cases}
+    \begin{cases}
+        \nabla \cdot \bm{B}(t,\bm{x}) &= 0 \\
+        \nabla \times \bm{E}(t,\bm{x}) + {\fracpd {\bm{B}(t,\bm{x})}{t}} &= 0 \\
+        \nabla \cdot \bm{D}(t,\bm{x}) &= \rho (t,\bm{x}) \\
+        \nabla \times \bm{H}(t,\bm{x})-{\fracpd {\bm{D}(t,\bm{x})}{t}} &= \bm{j}(t,\bm{x})
+        \label{eqn:maxwell}
+    \end{cases}
 \end{align}
 
 \subsection{URL}
@@ -203,7 +202,7 @@ bounding box周りの面倒事にも悩まされなくてすむので，PDFフ�
 \section{数式の記法}
 
 \subsection{単位の書き方%
-\label{unitCommand}
+    \label{unitCommand}
 }
 
 Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる．
@@ -230,30 +229,30 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
         単位までの間隔が狭くなる
     \item \verb`10\U{N \udot m}`$\implies10\U{N \udot m}$ 
 
-    \verb`cdot`だとスペースが空いてしまう
+        \verb`cdot`だとスペースが空いてしまう
     \item \verb`6.67430\times 10^{-11} \U{m^3 kg^{-1} s^{-2}}`
 
-    $\implies6.67430\times 10^{-11} \U{m^3 kg^{-1} s^{-2}}$ 
+        $\implies6.67430\times 10^{-11} \U{m^3 kg^{-1} s^{-2}}$ 
 
-    重力定数
+        重力定数
     \item \verb`6.67430\times 10^{-11} \U{m^3\, kg^{-1}\, s^{-2}}`
 
-    $\implies6.67430\times 10^{-11} \U{m^3\, kg^{-1}\, s^{-2}}$ 
+        $\implies6.67430\times 10^{-11} \U{m^3\, kg^{-1}\, s^{-2}}$ 
 
-    間隔を空けるのが好きならこうするのもあり
+        間隔を空けるのが好きならこうするのもあり
     \item \verb`100\degC`$\implies100\degC$ 
 
-    水の沸点
+        水の沸点
     \item \verb`100\degF`$\implies100\degF$ 
 
-    ヒトの体温
+        ヒトの体温
     \item \verb`180\deg`$\implies180\deg$ 
 
-    2直角
+        2直角
 \end{itemize}
 
 \subsection{その他の記号%
-\label{otherSymbols}%
+    \label{otherSymbols}%
 }
 
 よく使う記号を下にまとめた．
@@ -262,66 +261,66 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 
 下や上につく文字が変数ではない場合，ローマン体にする必要がある．
 \begin{itemize}
-\item \verb`E\sub{in}`$\implies E\sub{in}$
+    \item \verb`E\sub{in}`$\implies E\sub{in}$
 
-ローマン体下付き文字．\verb`E_\mathrm{in}`に同じ
-\item \verb`f\sur{(n)}`$\implies f\sur{(n)}$
+        ローマン体下付き文字．\verb`E_\mathrm{in}`に同じ
+    \item \verb`f\sur{(n)}`$\implies f\sur{(n)}$
 
-ローマン体上付き文字
+        ローマン体上付き文字
 \end{itemize}
 
 \subsubsection{その他ローマン体にする必要のある文字}
 変数以外の文字（定数など）もローマン体にする必要がある．
 
 \begin{itemize}
-\item \verb`\ii`$\implies \ii$
+    \item \verb`\ii`$\implies \ii$
 
-虚数単位
-\item \verb`\jj`$\implies \jj$
+        虚数単位
+    \item \verb`\jj`$\implies \jj$
 
-虚数単位
-\item \verb`\ee`$\implies \ee$
+        虚数単位
+    \item \verb`\ee`$\implies \ee$
 
-ネイピア数
-\item \verb`\dd` $\implies \dd$
+        ネイピア数
+    \item \verb`\dd` $\implies \dd$
 
-微分演算子
-\item \verb`\Re` $\implies \Re$
+        微分演算子
+    \item \verb`\Re` $\implies \Re$
 
-実部
-\item \verb`\Im` $\implies \Im$
+        実部
+    \item \verb`\Im` $\implies \Im$
 
-虚部
-\begin{remark}
-    これら２つは，\texttt{\textbackslash Re},\texttt{\textbackslash Im}という標準コマンドを上書きする．
-    標準コマンドは使えなくなってしまうが，\texttt{\textbackslash mathfrak\{R\}}$\implies \mathfrak{R}$で同じ文字を出すことが可能．
-\end{remark}
-\item \verb`\cc` $\implies \cc$
+        虚部
+        \begin{remark}
+            これら２つは，\texttt{\textbackslash Re},\texttt{\textbackslash Im}という標準コマンドを上書きする．
+            標準コマンドは使えなくなってしまうが，\texttt{\textbackslash mathfrak\{R\}}$\implies \mathfrak{R}$で同じ文字を出すことが可能．
+        \end{remark}
+    \item \verb`\cc` $\implies \cc$
 
-複素共役．例：$\Re z = (z+\cc)/2$
-\item \verb`\Hc` $\implies \Hc$
+        複素共役．例：$\Re z = (z+\cc)/2$
+    \item \verb`\Hc` $\implies \Hc$
 
-エルミート共役
+        エルミート共役
 \end{itemize}
 
 \subsubsection{ブラ・ケット}
 
 \begin{itemize}
-\item \verb`\bra{\phi}` $\implies \bra{\phi}$
+    \item \verb`\bra{\phi}` $\implies \bra{\phi}$
 
-ブラ
-\item \verb`\ket{\phi}` $\implies \ket{\phi}$
+        ブラ
+    \item \verb`\ket{\phi}` $\implies \ket{\phi}$
 
-ケット
-\item \verb`\bracket{\phi}` $\implies \bracket{\phi}$
+        ケット
+    \item \verb`\bracket{\phi}` $\implies \bracket{\phi}$
 
-ブラケット
-\item \verb`\bracket{\phi}[\psi]` $\implies \bracket{\phi}[\psi]$
+        ブラケット
+    \item \verb`\bracket{\phi}[\psi]` $\implies \bracket{\phi}[\psi]$
 
-ブラケット
-\item \verb`\bracket{\phi}[A][\psi]` $\implies \bracket{\phi}[A][\psi]$
+        ブラケット
+    \item \verb`\bracket{\phi}[A][\psi]` $\implies \bracket{\phi}[A][\psi]$
 
-ブラケット
+        ブラケット
 \end{itemize}
 
 2個目以降の引数が\texttt{[]}になってるのはオプション引数のイメージ．
@@ -333,46 +332,46 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 \subsubsection{ベクトル演算}
 
 \begin{itemize}
-\item \verb`\diver` $\implies \diver$
+    \item \verb`\diver` $\implies \diver$
 
-発散．\verb`\div`は割り算記号に予約済
-\item \verb`\curl` $\implies \curl$
+        発散．\verb`\div`は割り算記号に予約済
+    \item \verb`\curl` $\implies \curl$
 
-回転
-\item \verb`\rot` $\implies \rot$
+        回転
+    \item \verb`\rot` $\implies \rot$
 
-回転
-\item \verb`\grad` $\implies \grad$
+        回転
+    \item \verb`\grad` $\implies \grad$
 
-勾配
-\item \verb`\vct{ABC}` $\implies \vct{ABC}$
+        勾配
+    \item \verb`\vct{ABC}` $\implies \vct{ABC}$
 
-ベクトル．\verb`\bm{ABC}`に同じ．
-なお\verb`\vec{A}`は上矢印つき文字$\vec{A}$になる
+        ベクトル．\verb`\bm{ABC}`に同じ．
+        なお\verb`\vec{A}`は上矢印つき文字$\vec{A}$になる
 
 \end{itemize}
 
 \subsubsection{微分}
 
 \begin{itemize}
-\item \verb`\fracd{x}{t}` $\implies \fracd{x}{t}$
+    \item \verb`\fracd{x}{t}` $\implies \fracd{x}{t}$
 
-微分．後ろについているdはdifferentiationの意
-\item \verb`\fracd[n]{x}{t}` $\implies \fracd[n]{x}{t}$
+        微分．後ろについているdはdifferentiationの意
+    \item \verb`\fracd[n]{x}{t}` $\implies \fracd[n]{x}{t}$
 
-オプション引数をつけるとn階微分になる．
-\item \verb`\dfracd{x}{t}` $\implies \dfracd{x}{t}$
+        オプション引数をつけるとn階微分になる．
+    \item \verb`\dfracd{x}{t}` $\implies \dfracd{x}{t}$
 
-前にdをつけると微分（\texttt{displaystyle}）になる．
-\item \verb`\fracpd{P}{q}` $\implies \fracpd{P}{q}$
+        前にdをつけると微分（\texttt{displaystyle}）になる．
+    \item \verb`\fracpd{P}{q}` $\implies \fracpd{P}{q}$
 
-後ろにpをつけると偏微分になる．partial differentiationの意
-\item \verb`\ffracd{P}{q}` $\implies \ffracd{P}{q}$
+        後ろにpをつけると偏微分になる．partial differentiationの意
+    \item \verb`\ffracd{P}{q}` $\implies \ffracd{P}{q}$
 
-前にfをつけると1段になる．インライン数式などで文字が小さくなるのを防げる．flat fracdの意
-\item \verb`\fracpd{P}{q}[r][s]` $\implies \fracpd{P}{q}[r][s]$
+        前にfをつけると1段になる．インライン数式などで文字が小さくなるのを防げる．flat fracdの意
+    \item \verb`\fracpd{P}{q}[r][s]` $\implies \fracpd{P}{q}[r][s]$
 
-偏微分はオプション引数をつけることで通常の微分変数に加えて2個まで微分変数を追加できる．
+        偏微分はオプション引数をつけることで通常の微分変数に加えて2個まで微分変数を追加できる．
 \end{itemize}
 
 \begin{remark}
@@ -403,33 +402,33 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 \subsubsection{その他数式}
 
 \begin{itemize}
-\item \verb`A \defeq B` $\implies A \defeq B$
+    \item \verb`A \defeq B` $\implies A \defeq B$
 
-定義
-\item \verb`A \coloneqq B` $\implies A \coloneqq B$
+        定義
+    \item \verb`A \coloneqq B` $\implies A \coloneqq B$
 
-定義．\texttt{mathtools}パッケージ
-\item \verb`\ph{E}` $\implies \ph{E}$
+        定義．\texttt{mathtools}パッケージ
+    \item \verb`\ph{E}` $\implies \ph{E}$
 
-フェーザ．\verb`\tilde{E}`に同じ
-\item \verb`\dot{E}` $\implies \dot{E}$
+        フェーザ．\verb`\tilde{E}`に同じ
+    \item \verb`\dot{E}` $\implies \dot{E}$
 
-フェーザ・微分．標準コマンドであるが一応併記した
-\item \verb`\ddot{x}` $\implies \ddot{x}$
+        フェーザ・微分．標準コマンドであるが一応併記した
+    \item \verb`\ddot{x}` $\implies \ddot{x}$
 
-二階微分．三階，四階も同様
-\item \verb`\N` $\implies \N$
+        二階微分．三階，四階も同様
+    \item \verb`\N` $\implies \N$
 
-自然数全体の集合．$\Z,\Q,\R,\C$も同様\cite{y.}
-\item \verb`\abs{x}` $\implies \abs{x}$
+        自然数全体の集合．$\Z,\Q,\R,\C$も同様\cite{y.}
+    \item \verb`\abs{x}` $\implies \abs{x}$
 
-絶対値．\cite{y.}
-\item \verb`\norm{x}` $\implies \norm{x}$
+        絶対値．\cite{y.}
+    \item \verb`\norm{x}` $\implies \norm{x}$
 
-ノルム．\cite{y.}
-\item \verb`\wcond{y(x)}{x=3}` $\implies \wcond{y(x)}{x=3}$
+        ノルム．\cite{y.}
+    \item \verb`\wcond{y(x)}{x=3}` $\implies \wcond{y(x)}{x=3}$
 
-条件．with conditionの意
+        条件．with conditionの意
 \end{itemize}
 
 \section{ハコモノ}
@@ -487,29 +486,29 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 細かい設定が可能なテキストエディタを使っている人はスニペットを登録するとさらにすばやく入力できるかもしれない．
 例えば，Vimでそのような設定をする方法については拙稿 
 \uhref{https://woodyzootopia.github.io/2020/02/vim-\%E3\%82\%B9\%E3\%83\%8B\%E3\%83\%9A\%E3\%83\%83\%E3\%83\%88\%E3\%81\%AE\%E5\%8A\%9B\%E3\%81\%A7latex\%E3\%82\%82\%E3\%82\%B5\%E3\%82\%AF\%E3\%82\%B5\%E3\%82\%AF\%E5\%85\%A5\%E5\%8A\%9B/}{Vimとスニペットの力でLaTeXもサクサク入力}
- を参照してほしい．
+を参照してほしい．
 
 \begin{thebibliography}{9}
 
-\bibitem[5ebec, 2019]{heiho} 5ebec. \uhref{https://github.com/5ebec/student-experiment-latex-template}{学生実験のための\LaTeX{}雛形}. 2019.
+    \bibitem[5ebec, 2019]{heiho} 5ebec. \uhref{https://github.com/5ebec/student-experiment-latex-template}{学生実験のための\LaTeX{}雛形}. 2019.
 
-\bibitem[北野, 2004]{kitano} Masao Kitano. ``\uhref{http://kir018304.kir.jp/nc/htdocs/?page_id=21}{Unit.sty --- A small macro package for physical formulas}''. 2004.
+    \bibitem[北野, 2004]{kitano} Masao Kitano. ``\uhref{http://kir018304.kir.jp/nc/htdocs/?page_id=21}{Unit.sty --- A small macro package for physical formulas}''. 2004.
 
-単位，数式の様々な便利な略記法がのっているスタイルファイル．
-\uhyperref[unitCommand]{単位の書き方}，\uhyperref[otherSymbols]{その他の記号}の節はおもにこれによった．
+    単位，数式の様々な便利な略記法がのっているスタイルファイル．
+    \uhyperref[unitCommand]{単位の書き方}，\uhyperref[otherSymbols]{その他の記号}の節はおもにこれによった．
 
-\bibitem[y., 2016]{y.} y. \uhref{http://iso.2022.jp/math/texintro2016/resume.pdf}{\TeX{}講習会資料}. 2016.
+    \bibitem[y., 2016]{y.} y. \uhref{http://iso.2022.jp/math/texintro2016/resume.pdf}{\TeX{}講習会資料}. 2016.
 
-\bibitem[小田, 1995]{oda:95} 小田忠雄. 数学の常識・非常識---由緒正しい\TeX{}入力法. 数学通信, Vol.~4, No.~1, pp.~95--112, 1995.
-\uurl{http://mathsoc.jp/publication/tushin/index-4-1.html}.
+    \bibitem[小田, 1995]{oda:95} 小田忠雄. 数学の常識・非常識---由緒正しい\TeX{}入力法. 数学通信, Vol.~4, No.~1, pp.~95--112, 1995.
+    \uurl{http://mathsoc.jp/publication/tushin/index-4-1.html}.
 
-\bibitem[Asakura, 2016]{TakutoAsakura} Takuto Asakura. p\LaTeXe{}チートシート. 2016.
+    \bibitem[Asakura, 2016]{TakutoAsakura} Takuto Asakura. p\LaTeXe{}チートシート. 2016.
 
-\bibitem[奥村, 2013]{HO} Haruhiko Okumura et al. \LaTeXe{}美文書作成入門 改訂第6版. 2013.
+    \bibitem[奥村, 2013]{HO} Haruhiko Okumura et al. \LaTeXe{}美文書作成入門 改訂第6版. 2013.
 
-\bibitem[藤田, 2003]{SH} Shinsaku Fujita. \LaTeXe{}コマンドブック. 2003.
+    \bibitem[藤田, 2003]{SH} Shinsaku Fujita. \LaTeXe{}コマンドブック. 2003.
 
-\bibitem[NIDE, 2020]{NN} NIDE, N. \uhref{https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwju6avo8LzpAhUCy4sBHR_AD5cQFjAAegQIAxAB&url=ftp\%3A\%2F\%2Fblackknight.ics.nara-wu.ac.jp\%2Fpub\%2Fdoc\%2Fbibtex.pdf&usg=AOvVaw0yko3wjWBPCh1l5ZvvUbZH}{\hologo{BibTeX} の使い方・簡易資料}. 2020.
+    \bibitem[NIDE, 2020]{NN} NIDE, N. \uhref{https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwju6avo8LzpAhUCy4sBHR_AD5cQFjAAegQIAxAB&url=ftp\%3A\%2F\%2Fblackknight.ics.nara-wu.ac.jp\%2Fpub\%2Fdoc\%2Fbibtex.pdf&usg=AOvVaw0yko3wjWBPCh1l5ZvvUbZH}{\hologo{BibTeX} の使い方・簡易資料}. 2020.
 
 \end{thebibliography}
 
