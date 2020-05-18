@@ -51,14 +51,10 @@
 \end{lstlisting}
 とすればよい．
 
-\section{コマンド解説}
-
-このスタイルファイルで使用可能になるコマンドを解説する．
-
-\subsection{参照}
+\section{参照}
 文章の他の部分を参照する方法を述べる．表・図・式の参照については\cite{heiho}を参考にした．
 
-\subsubsection{表}
+\subsection{表}
 \verb+\tabref{...}+とすれば表を参照できる．
 
 例：\tabref{tab:results}を参照
@@ -76,7 +72,7 @@ $f/\iU{Hz}$ & $|E_{i}|/\iU{V}$ & $|E_{o}|/\iU{V}$ & $\theta/\iU{deg}$ \\ \hline
 \end{tabular}\label{tab:results}
 \end{table}
 
-\subsubsection{図}
+\subsection{図}
 \verb+\figref{...}+とすれば図を参照できる．
 
 例：\figref{fig:gainFit}は小さめ，
@@ -103,7 +99,7 @@ bounding box周りの面倒事にも悩まされなくてすむので，PDFフ�
 ように，純粋なテキストファイルなので，テキストエディタで編集でき，バージョン管理が容易というメリットもある}
 ．
 
-\subsubsection{回路図}
+\subsection{回路図}
 
 \texttt{tikz}環境を使うと，図を描くことができる．
 特に，\texttt{circuitikz}環境では，回路図を描くための便利なコマンドが使える．
@@ -148,7 +144,7 @@ bounding box周りの面倒事にも悩まされなくてすむので，PDFフ�
     \label{fig:OpAmpAndCondenserConnection}
 \end{figure}
 
-\subsubsection{数式}
+\subsection{数式}
 
 \verb+\eqnref{...}+で参照できる．
 
@@ -169,7 +165,7 @@ bounding box周りの面倒事にも悩まされなくてすむので，PDFフ�
   \end{cases}
 \end{align}
 
-\subsubsection{URL}
+\subsection{URL}
 下線を引いて強調したい場合は
 \verb+\uurl{https://...}+\footnote{underlined urlの意}
 が使える．
@@ -188,9 +184,9 @@ bounding box周りの面倒事にも悩まされなくてすむので，PDFフ�
     \item \texttt{uhref}を使った場合：\uhref{https://www.google.com/}{某広告企業}
 \end{itemize}
 
-\subsection{数式の記法}
+\section{数式の記法}
 
-\subsubsection{単位の書き方%
+\subsection{単位の書き方%
 \label{unitCommand}
 }
 
@@ -236,19 +232,28 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
     2直角
 \end{itemize}
 
-\subsubsection{その他の記号%
+\subsection{その他の記号%
 \label{otherSymbols}%
 }
 
 よく使う記号を下にまとめた．
 
+\subsubsection{下付き・上付き文字}
+
+下や上につく文字が変数ではない場合，ローマン体にする必要がある．
 \begin{itemize}
 \item \verb`E\sub{in}`$\implies E\sub{in}$
 
-ローマン体下付き文字
+ローマン体下付き文字．\verb`E_\mathrm{in}`に同じ
 \item \verb`f\sur{(n)}`$\implies f\sur{(n)}$
 
 ローマン体上付き文字
+\end{itemize}
+
+\subsubsection{その他ローマン体にする必要のある文字}
+変数以外の文字（定数など）もローマン体にする必要がある．
+
+\begin{itemize}
 \item \verb`\ii`$\implies \ii$
 
 虚数単位
@@ -273,6 +278,13 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 \item \verb`\Hc` $\implies \Hc$
 
 エルミート共役
+\end{itemize}
+
+\footnotetext[1]{これら２つは，\texttt{\textbackslash Re},\texttt{\textbackslash Im}という標準コマンドを上書きするが，\texttt{\textbackslash mathfrak\{R\}}$=\mathfrak{R}$などで代用可能なので，どちらにするかは好みである}
+
+\subsubsection{ブラ・ケット}
+
+\begin{itemize}
 \item \verb`\bra{\phi}` $\implies \bra{\phi}$
 
 ブラ
@@ -288,6 +300,14 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 \item \verb`\bracket{\phi}[A][\psi]`\footnotemark[2] $\implies \bracket{\phi}[A][\psi]$
 
 ブラケット\footnotemark[3]
+\end{itemize}
+
+\footnotetext[2]{\texttt{[]}になってるのはオプション引数のイメージ}
+\footnotetext[3]{なお，ブラケットについては\verb`braket.sty`というスタイルファイルも存在するので，こちらを使ってもよい．綴りに注意}
+
+\subsubsection{ベクトル演算}
+
+\begin{itemize}
 \item \verb`\diver` $\implies \diver$
 
 発散．\verb`\div`は割り算記号に予約済
@@ -302,7 +322,39 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 勾配
 \item \verb`\vct{ABC}` $\implies \vct{ABC}$
 
-ベクトル．\verb`\bm{ABC}`に同じ．\verb`\vec`は上矢印
+ベクトル．\verb`\bm{ABC}`に同じ．
+なお\verb`\vec{A}`は上矢印つき文字$\vec{A}$になる
+
+\end{itemize}
+
+\subsubsection{微分}
+
+\begin{itemize}
+\item \verb`\fracd{x}{t}` $\implies \fracd{x}{t}$
+
+微分．frac differentiationの意
+\item \verb`\fracd[n]{x}{t}` $\implies \fracd[n]{x}{t}$
+
+オプション引数をつけるとn階微分になる．
+\item \verb`\dfracd{x}{t}` $\implies \dfracd{x}{t}$
+
+前にdをつけると微分（\texttt{displaystyle}）になる．
+\item \verb`\fracpd{P}{q}` $\implies \fracpd{P}{q}$
+
+後ろにpをつけると偏微分になる．partial differentiationの意
+\item \verb`\ffracd{P}{q}` $\implies \ffracd{P}{q}$
+
+前にfをつけると1段になる．インライン数式などで文字が小さくなるのを防げる．flat fracdの意
+\item \verb`\fracpd{P}{q}[r][s]` $\implies \fracpd{P}{q}[r][s]$
+
+偏微分はオプション引数をつけることで通常の微分変数に加えて2個まで微分変数を追加できる．
+\end{itemize}
+
+前や後ろにつけるp,d,fは組み合わせて使うこともできる．
+
+\subsubsection{その他数式}
+
+\begin{itemize}
 \item \verb`A \defeq B` $\implies A \defeq B$
 
 定義
@@ -314,28 +366,10 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 フェーザ．\verb`\tilde{E}`に同じ
 \item \verb`\dot{E}` $\implies \dot{E}$
 
-フェーザ・微分．標準コマンド
+フェーザ・微分．標準コマンドであるが一応併記した
 \item \verb`\ddot{x}` $\implies \ddot{x}$
 
 二階微分．三階，四階も同様
-\item \verb`\fracd{x}{t}` $\implies \fracd{x}{t}$
-
-微分．下に示すような派生があり,組み合わせて使える
-\item \verb`\fracd[n]{x}{t}` $\implies \fracd[n]{x}{t}$
-
-n階微分．オプション引数をつける
-\item \verb`\dfracd{x}{t}` $\implies \dfracd{x}{t}$
-
-微分（\texttt{displaystyle}）．前にdをつける
-\item \verb`\fracpd{P}{q}` $\implies \fracpd{P}{q}$
-
-偏微分．partial differentiationの意
-\item \verb`\ffracd{P}{q}` $\implies \ffracd{P}{q}$
-
-微分．flat fracdの意
-\item \verb`\fracpd{P}{q}[r][s]` $\implies \fracpd{P}{q}[r][s]$
-
-偏微分．通常の微分変数に加えてオプション引数で2個まで微分変数を追加できる．
 \item \verb`\N` $\implies \N$
 
 自然数全体の集合．$\Z,\Q,\R,\C$も同様\cite{y.}
@@ -350,11 +384,8 @@ n階微分．オプション引数をつける
 条件．with conditionの意
 \end{itemize}
 
-\footnotetext[1]{これら２つは，\texttt{\textbackslash Re},\texttt{\textbackslash Im}という標準コマンドを上書きするが，\texttt{\textbackslash mathfrak\{R\}}$=\mathfrak{R}$などで代用可能なので，どちらにするかは好みである}
-\footnotetext[2]{\texttt{[]}になってるのはオプション引数のイメージ}
-\footnotetext[3]{なお，ブラケットについては\verb`braket.sty`というスタイルファイルも存在するので，こちらを使ってもよい．綴りに注意}
 
-\subsection{参考になる資料}
+\section{参考になる資料}
 
 \cite{heiho}は実験レポートづくりのたたき台として役にたつ．
 このPDFはこれに触発されて作った．
