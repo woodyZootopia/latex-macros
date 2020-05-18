@@ -266,12 +266,16 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 \item \verb`\dd` $\implies \dd$
 
 微分演算子
-\item \verb`\Re`\footnotemark[1] $\implies \Re$
+\item \verb`\Re` $\implies \Re$
 
 実部
-\item \verb`\Im`\footnotemark[1] $\implies \Im$
+\item \verb`\Im` $\implies \Im$
 
 虚部
+\begin{remark}
+    これら２つは，\texttt{\textbackslash Re},\texttt{\textbackslash Im}という標準コマンドを上書きする．
+    標準コマンドは使えなくなってしまうが，\texttt{\textbackslash mathfrak\{R\}}$\implies \mathfrak{R}$で同じ文字を出すことが可能．
+\end{remark}
 \item \verb`\cc` $\implies \cc$
 
 複素共役．例：$\Re z = (z+\cc)/2$
@@ -279,8 +283,6 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 
 エルミート共役
 \end{itemize}
-
-\footnotetext[1]{これら２つは，\texttt{\textbackslash Re},\texttt{\textbackslash Im}という標準コマンドを上書きするが，\texttt{\textbackslash mathfrak\{R\}}$=\mathfrak{R}$などで代用可能なので，どちらにするかは好みである}
 
 \subsubsection{ブラ・ケット}
 
@@ -294,16 +296,19 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 \item \verb`\bracket{\phi}` $\implies \bracket{\phi}$
 
 ブラケット
-\item \verb`\bracket{\phi}[\psi]`\footnotemark[2] $\implies \bracket{\phi}[\psi]$
+\item \verb`\bracket{\phi}[\psi]` $\implies \bracket{\phi}[\psi]$
 
 ブラケット
-\item \verb`\bracket{\phi}[A][\psi]`\footnotemark[2] $\implies \bracket{\phi}[A][\psi]$
+\item \verb`\bracket{\phi}[A][\psi]` $\implies \bracket{\phi}[A][\psi]$
 
-ブラケット\footnotemark[3]
+ブラケット
 \end{itemize}
 
-\footnotetext[2]{\texttt{[]}になってるのはオプション引数のイメージ}
-\footnotetext[3]{なお，ブラケットについては\verb`braket.sty`というスタイルファイルも存在するので，こちらを使ってもよい．綴りに注意}
+2個目以降の引数が\texttt{[]}になってるのはオプション引数のイメージ．
+\begin{remark}
+    なお，ブラケットについては\verb`braket.sty`というスタイルファイルも存在するので，こちらを使ってもよい．綴りに注意．
+    その場合，バッティングを防ぐため，ソースコードからこのコマンドを定義している場所を削除したほうが良いだろう．
+\end{remark}
 
 \subsubsection{ベクトル演算}
 
@@ -350,7 +355,9 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 偏微分はオプション引数をつけることで通常の微分変数に加えて2個まで微分変数を追加できる．
 \end{itemize}
 
-前や後ろにつけるp,d,fは組み合わせて使うこともできる．
+\begin{remark}
+    前や後ろにつけるp,d,fは組み合わせて使うこともできる．
+\end{remark}
 
 \subsubsection{その他数式}
 
