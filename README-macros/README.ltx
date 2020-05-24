@@ -22,7 +22,7 @@
 
 \begin{itemize}
     \item プリアンブルに1行書き込むだけでよく使われるパッケージが全て読み込まれる
-    \item よく使われる数学記号，表や図，式への参照などのための略記コマンドが全て読み込まれる
+    \item よく使われる数学記号，表や図，式への参照などのためのshorthand（略記コマンド）が全て読み込まれる
 \end{itemize}
 
 ため，様々な種類のパッケージをいちいち\verb`\usepackage`したり，複雑な数式コマンドを手で入力するのに煩わされずにすむ．
@@ -38,9 +38,13 @@
 \footnote{もしおすすめの修正があれば教えてください}
 ．
 
-なお，作者の環境はup\LaTeX{}である．
+\subsection{テスト}
+読者の\LaTeX{}環境でこのスタイルファイルが使えるかは，この文書自体をコンパイルすることで確かめてみてほしい．
+ソースコードはこの文書と同じディレクトリ内に存在する．
 
-\section{スタイルファイルのインストール}
+なお，作者の環境は\verb`pacman`でインストールした\verb`texlive`である．
+
+\section{スタイルファイルを使用するには}
 
 \LaTeX{}ファイルのプリアンブルに普段どおり
 \begin{lstlisting}
@@ -51,7 +55,7 @@
 \begin{lstlisting}
 \documentclass[12pt,a4paper,titlepage,dvipdfmx]{bxjsarticle}
 \end{lstlisting}
-などと記入\footnote{geometryはmarginの設定など個人ごとに内容が大きく違うと思うのでスタイルファイルに含めなかった．}
+などと記入\footnote{geometryはmarginの設定など個人ごとに内容が大きく違うと思うのでスタイルファイルに含めなかった．また，jsclasses（文書スタイル）も含めていないので，jsarticle/jsreport/jsbook から選べる}
 したあと，
 \verb+macros.sty, macros-maths.sty+を\LaTeX{}ファイルと同じ場所にコピーして，
 \begin{lstlisting}
@@ -81,10 +85,10 @@
     \begin{tabular}{|r|r|r|r|}
         \hline
         $f/\iU{Hz}$ & $|E_{i}|/\iU{V}$ & $|E_{o}|/\iU{V}$ & $\theta/\iU{deg}$ \\ \hline
-        50         & 4.1                & 0.056              & 90               \\ \hline
-        100        & 4.1                & 0.092              & 90               \\ \hline
-        500        & 4.1                & 0.424              & 83.5             \\ \hline
-        700        & 4.1                & 0.577              & 80.5             \\ \hline
+        50          & 4.1              & 0.056            & 90                \\ \hline
+        100         & 4.1              & 0.092            & 90                \\ \hline
+        500         & 4.1              & 0.424            & 83.5              \\ \hline
+        700         & 4.1              & 0.577            & 80.5              \\ \hline
     \end{tabular}\label{tab:results}
 \end{table}
 
@@ -109,7 +113,7 @@
 なお，p\LaTeX{}においてはPDFファイルを普通に読み込むことができるうえ，
 bounding box周りの面倒事にも悩まされなくてすむので，PDFファイルのほうが使いやすい．
 大きなデメリットもないので，可能ならPDF形式で画像を保存しておくのが良いだろう
-\footnote{なお，EPSファイルはデメリットばかりというわけでもないようだ．golden lucky氏が
+\footnote{EPSファイルはデメリットばかりというわけでもないようだ．golden lucky氏が
     \uhref{https://golden-lucky.hatenablog.com/entry/2018/12/04/183000\#LaTeX\%E6\%96\%87\%E6\%9B\%B8\%E3\%81\%AB\%E3\%81\%8A\%E3\%81\%84\%E3\%81\%A6EPS\%E3\%81\%AF\%E3\%81\%A9\%E3\%81\%86\%E6\%89\%B1\%E3\%82\%8F\%E3\%82\%8C\%E3\%82\%8B\%E3\%81\%8B}{論じている}
     ように，純粋なテキストファイルなので，テキストエディタで編集でき，バージョン管理が容易というメリットもある}
 ．
@@ -118,7 +122,7 @@ bounding box周りの面倒事にも悩まされなくてすむので，PDFフ�
 
 \texttt{tikz}環境を使うと，図を描くことができる．
 特に，\texttt{circuitikz}環境では，回路図を描くための便利なコマンドが使える．
-詳しくはソースコードを見てほしい．
+詳しくはソースコードを見るとよいが，
 \figref{fig:HPF}，\figref{fig:OpAmpAndCondenserConnection}のような図を出力できる．
 また，端末に\texttt{texdoc circuitikz}と入力することでマニュアルを読むことができる．
 
@@ -164,6 +168,10 @@ bounding box周りの面倒事にも悩まされなくてすむので，PDFフ�
 \verb+\eqnref{...}+で参照できる．
 
 例：\eqnref{eqn:sc}, \eqnref{eqn:maxwell}．
+
+また，\verb+\eqref{...}+は「式」という言葉を表示しない．
+
+例：\eqref{eqn:sc}, \eqref{eqn:maxwell}．
 
 \begin{equation}
     I = I\sub{ph} - I\sub{d} = I\sub{ph} - I_0\left\{\exp\left(\frac{qV}{nkT}\right)-1\right\}
@@ -259,7 +267,7 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 
 \subsubsection{下付き・上付き文字}
 
-下や上につく文字が文字式ではない場合，ローマン体にする必要がある．
+下や上につく文字が文字式ではない場合，ローマン体にするのが好ましい．
 \begin{itemize}
     \item \verb`E\sub{in}`$\implies E\sub{in}$
 
@@ -270,7 +278,7 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 \end{itemize}
 
 \subsubsection{その他ローマン体にする必要のある文字}
-変数以外の文字（定数など）もローマン体にする必要がある．
+変数以外の文字（定数など）もローマン体にするのが好ましい．
 
 \begin{itemize}
     \item \verb`\ii`$\implies \ii$
@@ -303,6 +311,16 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
         エルミート共役
 \end{itemize}
 
+\begin{example}
+    フーリエ変換の式は
+    \begin{equation}
+        F\paren{f} = \int_{-\infty}^{\infty} f\paren{t}\ee ^{-\jj 2\pi ft} \dd t
+    \end{equation}
+    になる．
+    $\ee ,\jj ,\dd $がローマン体になっていることに注目．
+\end{example}
+なぜローマン体のほうが好ましいかの議論については\cite{kitano}を参照．
+
 \subsubsection{ブラ・ケット}
 
 \begin{itemize}
@@ -323,10 +341,9 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
         ブラケット
 \end{itemize}
 
-2個目以降の引数が\texttt{[]}になってるのはオプション引数のイメージ．
+2個目以降の引数が\texttt{[]}になってるのはオプション引数のイメージ．対称的でなくあまり美しくないのでなんとかしたい．
 \begin{remark}
-    なお，ブラケットについては\verb`braket.sty`というスタイルファイルも存在するので，こちらを使ってもよい．綴りに注意．
-    その場合，バッティングを防ぐため，ソースコードからこのコマンドを定義している場所を削除したほうが良いだろう．
+    ブラケットについては\verb`braket.sty`というスタイルファイルも存在するので，こちらを使ってもよい．綴りに注意．
 \end{remark}
 
 \subsubsection{ベクトル演算}
@@ -483,7 +500,7 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
 
 \cite{NN}は\hologo{BibTeX}の使い方についてわかりやすく解説している．参考文献の付け方について参考になる．
 
-\texttt{macros.sty}における数式コマンドは比較的入力文字数を削減するように設計しているが，
+\texttt{macros.sty}における数式コマンドはできるだけ入力文字数を削減するように設計されているが，
 細かい設定が可能なテキストエディタを使っている人はスニペットを登録するとさらにすばやく入力できるかもしれない．
 例えば，Vimでそのような設定をする方法については拙稿 
 \uhref{https://woodyzootopia.github.io/2020/02/vim-\%E3\%82\%B9\%E3\%83\%8B\%E3\%83\%9A\%E3\%83\%83\%E3\%83\%88\%E3\%81\%AE\%E5\%8A\%9B\%E3\%81\%A7latex\%E3\%82\%82\%E3\%82\%B5\%E3\%82\%AF\%E3\%82\%B5\%E3\%82\%AF\%E5\%85\%A5\%E5\%8A\%9B/}{Vimとスニペットの力でLaTeXもサクサク入力}
