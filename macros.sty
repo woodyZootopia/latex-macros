@@ -1,36 +1,35 @@
 \ProvidesPackage{macros}[2020-01-08 - Shu Woody Nakamura]
 \NeedsTeXFormat{LaTeX2e}
 
-\RequirePackage[T1]{fontenc}                  % fontを8bitにする
+\RequirePackage[T1]{fontenc}                % fontを8bitにする
 \RequirePackage{bm}
-\RequirePackage{lmodern}                      % LMフォントを使う
-\RequirePackage{listings}                     % ソースコードを貼り付けられるようにする
+\RequirePackage{lmodern}                    % LMフォントを使う
+\RequirePackage{listings}                   % ソースコードを貼り付けられるようにする
 \RequirePackage{textcomp}
 \RequirePackage{nimbusserif}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[dvipdfmx]{graphicx}           % enables graphic
+\RequirePackage[dvipdfmx]{graphicx}         % enables graphic
 \RequirePackage{tikz}
 \RequirePackage{pgfplots}
-\usetikzlibrary{intersections, calc, patterns, arrows, decorations, angles}
+\usetikzlibrary{intersections,              calc, patterns, arrows, decorations, angles}
 \RequirePackage{circuitikz}
-\RequirePackage{here}                         % enables use of 'here' of picture
-\RequirePackage{amsmath,amssymb,amsfonts}     % enables math
-\RequirePackage{mathtools}                    % coloneqqなど
-\RequirePackage{amsthm,shadethm}              % 定理など
-\RequirePackage{mathrsfs}                     % enables use of script（花文字）
-\RequirePackage{url}                          % enables url
+\RequirePackage{here}                       % enables use of 'here' of picture
+\RequirePackage{amsmath,amssymb,amsfonts}   % enables math
+\RequirePackage{mathtools}                  % coloneqqなど
+\RequirePackage{amsthm,shadethm}            % 定理など
+\RequirePackage{mathrsfs}                   % enables use of script（花文字）
+\RequirePackage{url}                        % enables url
 \urlstyle{same}
-\RequirePackage{pxrubrica}                    % enables ruby of japanese
-% \RequirePackage[deluxe,expert,uplatex]{otf}           % enables use of opentype font
-% uplatexを使っていない人は，オプションからuplatexを削除してください
-% \RequirePackage[noto]{pxchfon}                % optional: use Google's Noto Font
-\RequirePackage{nimbusserif}                  % times for roman text
+\RequirePackage{pxrubrica}                  % enables ruby of japanese
+% \RequirePackage[deluxe,expert,uplatex]{otf} % enables use of opentype font. uplatexを使っていない人は，オプションからuplatexを削除してください
+% \RequirePackage[noto]{pxchfon}              % optional: use Google's Noto Font
+\RequirePackage{nimbusserif}                % times for roman text
 \RequirePackage{tcolorbox}
 \tcbuselibrary{breakable}
 \tcbuselibrary{skins}
 \RequirePackage{varwidth}
 \RequirePackage{pdfpages}
-\RequirePackage{hhline}                       % hhline
+\RequirePackage{hhline}                     % hhline
 \RequirePackage{wrapfig}
 \RequirePackage{ascmac}
 \RequirePackage{makeidx}
@@ -98,12 +97,12 @@
 
 \ProcessOptions\relax
 
-\numberwithin{definition}{section}
-\numberwithin{theorem}{section}
-\numberwithin{proposition}{section}
-\numberwithin{lemma}{section}
-\numberwithin{remark}{section}
-\numberwithin{example}{section}
+% \numberwithin{definition}{section}
+% \numberwithin{theorem}{section}
+% \numberwithin{proposition}{section}
+% \numberwithin{lemma}{section}
+% \numberwithin{remark}{section}
+% \numberwithin{example}{section}
 
 % 参照した数式にのみ数式番号をつける
 % \RequirePackage{mathtools}

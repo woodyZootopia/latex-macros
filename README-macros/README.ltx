@@ -77,7 +77,7 @@
 \subsection{表}
 \verb+\tabref{...}+とすれば表を参照できる．
 
-例：\tabref{tab:results}を参照
+例：\verb`\tabref{tab:results}を参照`$\implies$\tabref{tab:results}を参照
 
 \begin{table}[H]
     \centering
@@ -167,11 +167,11 @@ bounding box周りの面倒事にも悩まされなくてすむので，PDFフ�
 
 \verb+\eqnref{...}+で参照できる．
 
-例：\eqnref{eqn:sc}, \eqnref{eqn:maxwell}．
+例：\verb`\eqnref{eqn:sc}, \eqnref{eqn:maxwell}`$\implies$\eqnref{eqn:sc}, \eqnref{eqn:maxwell}．
 
 また，\verb+\eqref{...}+は「式」という言葉を表示しない．
 
-例：\eqref{eqn:sc}, \eqref{eqn:maxwell}．
+例：\verb`\eqref{eqn:sc}, \eqref{eqn:maxwell}`$\implies$\eqref{eqn:sc}, \eqref{eqn:maxwell}．
 
 \begin{equation}
     I = I\sub{ph} - I\sub{d} = I\sub{ph} - I_0\left\{\exp\left(\frac{qV}{nkT}\right)-1\right\}
@@ -299,16 +299,25 @@ Unit（単位）を書くためのコマンド \verb+\U{...}+が使用できる�
     \item \verb`\Im` $\implies \Im$
 
         虚部
-        \begin{remark}
+        \begin{itemize}
+            \item 
             これら２つは，\texttt{\textbackslash Re},\texttt{\textbackslash Im}という標準コマンドを上書きする．
             標準コマンドは使えなくなってしまうが，\texttt{\textbackslash mathfrak\{R\}}$\implies \mathfrak{R}$で同じ文字を出すことが可能．
-        \end{remark}
+        \end{itemize}
     \item \verb`\cc` $\implies \cc$
 
         複素共役．例：$\Re z = (z+\cc)/2$
     \item \verb`\Hc` $\implies \Hc$
 
         エルミート共役
+
+    \item \verb`\tr{A}` $\implies \tr{A}$
+
+        トレース
+
+    \item \verb`\diag{\lambda_1,\lambda_2,\lambda_3}` $\implies \diag{\lambda_1,\lambda_2,\lambda_3}$
+
+        対角行列
 \end{itemize}
 
 \begin{example}
